@@ -1,10 +1,9 @@
 package db;
 /**
  * 
- * @author mehra
- * MYSQL database schema :coursedatabase
- * user :coursedatabase_admin
- * pass :Test1234
+ * MYSQL database schema :ooaddatabase
+ * user :root
+ * pass :root
  * 
  */
 public interface MyDB {
