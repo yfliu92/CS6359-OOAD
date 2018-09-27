@@ -6,5 +6,16 @@
 **Install dev dependencies**
 - Run 'npm install package-name --save-dev'
 
-*Install prod dependencies*
+**Install prod dependencies**
 - Run 'npm install package-name --save'
+
+***********
+**Project Structure**
+
+- WebContent
+	- app
+		- shared (shared component, e.x. header, side bar, footer)
+		- styles 	 	
+	- public (public resources)
+		- assets
+		- css
