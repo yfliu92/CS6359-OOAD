@@ -1,0 +1,16 @@
+{
+  "name": "loc-fe",
+  "version": "1.0.0",
+  "description": "front-end of ooad project ",
+  "main": "n",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}
