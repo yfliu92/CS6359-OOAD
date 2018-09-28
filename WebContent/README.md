@@ -14,7 +14,7 @@
 
 - WebContent
 	- app
-		- shared (shared component, e.x. header, side bar, footer)
+		- shared (shared component, EG, header, side bar, footer)
 		- styles 	 	
 	- public (public resources)
 		- assets
