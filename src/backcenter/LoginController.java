@@ -1,4 +1,4 @@
-package domain.login;
+package backcenter;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.UserDao;
+import daoImp.UserDaoImpl;
+import domain.User;
 
 /**
  * Servlet implementation class Login
@@ -20,22 +24,27 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		CustomerDao customerDao = new CustomerDaoImpl();
+		UserDao userDao = new UserDaoImpl();
 		
-		String username = request.getParameter("username");
+		String id = request.getParameter("id");
 		String pass = request.getParameter("password");
 		String submitType = request.getParameter("submit");
-		Login login = new Login(username, pass);
-		Customer c = customerDao.validateCustomer(login);
+		Login login = new Login(id, pass);
+		User user = userDao.validateUser(login);
 		
-		if(submitType.equals("login") && c!=null && c.getName()!=null){
-			request.setAttribute("message", "Hello "+c.getName());
+		if(submitType.equals("login") && user!=null && user.getId()!=null){
+			request.setAttribute("message", "Hello "+user.getId());
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){
-			c.setName(request.getParameter("name"));
-			c.setUsername(request.getParameter("username"));
-			c.setPassword(request.getParameter("password"));
-			customerDao.register(c);
+			user.setF_name(request.getParameter("name"));
+			user.setId(request.getParameter("id"));
+			user.setPassword(request.getParameter("password"));
+			user.setF_name(request.getParameter("f_name"));
+			user.setL_name(request.getParameter("l_name"));
+			user.setEmail(request.getParameter("email"));
+			user.setSchool(request.getParameter("school"));
+			user.setYear(request.getParameter("year"));
+			userDao.register(user);
 			request.setAttribute("successMessage", "Registration done, please login!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else{

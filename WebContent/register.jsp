@@ -12,9 +12,16 @@
 <form name="regform" action="LoginController" method="post" onsubmit="return regValidate()">
 	<br>${message}<br>
 	
-	Username: <input type="text" name="username"> <br>
+	Username: <input type="text" name="id"> <br>
 	<div id="username_error"></div><br>
-	Customer name: <input type="text" name="name"><br>
+	First name: <input type="text" name="f_name"><br>
+	Last name: <input type="text" name="l_name"><br>
+	Email: <input type="email" name="email"><br>
+	School: <input type="text" name="school"><br>
+	Year: <input type="text" name="year"><br>
+	
+	
+	
 	
 	Password: <input type="password" name="password" id="password"> 
 	<br>

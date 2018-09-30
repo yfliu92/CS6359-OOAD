@@ -25,7 +25,7 @@
 
             <h4 class="title">User Name</h4>
             <div class="input-wrapper">
-                <input type="text" name="username" id="username"><br>
+                <input type="text" name="id" id="username"><br>
             </div>
 
             <h4 class="title">Password</h4>

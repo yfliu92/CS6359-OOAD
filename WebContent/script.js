@@ -1,12 +1,12 @@
 function regValidate() {
 
-	var username = document.forms["regform"]["username"].value;
+	var id = document.forms["regform"]["id"].value;
 	var password = document.forms["regform"]["password"].value;
 	var rpassword = document.forms["regform"]["retry-password"].value;
 	
-	if (username == "") {
-        alert("username must be filled out");
-        document.forms["regform"]["username"].focus();
+	if (id == "") {
+        alert("id must be filled out");
+        document.forms["regform"]["id"].focus();
         return false;
     }else if (password== "") {
         alert("password must be filled out");
@@ -23,12 +23,12 @@ function regValidate() {
     }
 }
 function loginValidate(){
-	var username = document.forms["loginform"]["username"].value;
+	var id = document.forms["loginform"]["id"].value;
 	var password = document.forms["loginform"]["password"].value;
 	
-	if (username == "") {
-        alert("username must be filled out");
-        document.forms["loginform"]["username"].focus();
+	if (id == "") {
+        alert("id must be filled out");
+        document.forms["loginform"]["id"].focus();
         return false;
     }else if (password== "") {
         alert("password must be filled out");
