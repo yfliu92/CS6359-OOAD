@@ -1,0 +1,105 @@
+DROP DATABASE IF EXISTS LOC;
+
+CREATE DATABASE LOC;
+
+USE LOC;
+
+DROP TABLE IF EXISTS USERS;
+
+CREATE TABLE USERS (
+	id CHAR(10) NOT NULL,
+    password char(10) DEFAULT NULL,
+	f_name VARCHAR(20) NOT NULL,
+	m_name VARCHAR(20),
+	l_name VARCHAR(20) NOT NULL,
+	email VARCHAR(30)  ,
+	school VARCHAR(10) ,
+	year CHAR(4),
+	user_type char(1) NOT NULL,
+	CONSTRAINT pk_users PRIMARY KEY (id)
+); 
+
+DROP TABLE IF EXISTS SYLLABUS;
+
+CREATE TABLE SYLLABUS(
+	id INT NOT NULL AUTO_INCREMENT,
+	ta_name VARCHAR(30),
+	ta_email VARCHAR(30),
+	col_1 VARCHAR(100),
+	col_2 VARCHAR(100),
+	CONSTRAINT pk_syllabus PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS COURSES;
+
+CREATE TABLE COURSES(
+	id INT NOT NULL AUTO_INCREMENT,
+	course_name VARCHAR(50) NOT NULL,
+	prefix VARCHAR(5) NOT NULL,
+	course_no CHAR(4) NOT NULL,
+	section_no CHAR(3) NOT NULL,
+	room VARCHAR(10) NOT NULL,
+	capacity INT NOT NULL,
+	year CHAR(4) NOT NULL,
+	semester VARCHAR(6) NOT NULL,
+	start_day DATE NOT NULL,
+	end_day DATE NOT NULL,
+	days VARCHAR(4) NOT NULL,
+	start_time TIME NOT NULL,
+	end_time TIME NOT NULL,
+	teacher_id CHAR(10) NOT NULL,
+	syllabus_no INT NOT NULL,
+	CONSTRAINT pk_courses PRIMARY KEY (id),
+	CONSTRAINT fk_courses_teacher FOREIGN KEY (teacher_id) REFERENCES USERS(id),
+	CONSTRAINT fk_courses_syllabus FOREIGN KEY (syllabus_no) REFERENCES SYLLABUS(id)
+);
+
+
+
+DROP TABLE IF EXISTS STU_COURSES;
+
+CREATE TABLE STU_COURSES(
+	stu_id CHAR(10) NOT NULL,
+	course_id INT NOT NULL,
+	CONSTRAINT pk_stu_courses PRIMARY KEY (stu_id,course_id),
+	CONSTRAINT fk_sc_users FOREIGN KEY (stu_id) REFERENCES USERS(id),
+	CONSTRAINT fk_sc_courses FOREIGN KEY (course_id) REFERENCES COURSES(id)
+);
+
+DROP TABLE IF EXISTS ATTENDANCE;
+
+CREATE TABLE ATTENDANCE(
+	id INT NOT NULL AUTO_INCREMENT,
+	course_id INT NOT NULL,
+	stu_id CHAR(10) NOT NULL,
+	day DATE NOT NULL,
+	state boolean default 0,
+	CONSTRAINT pk_attendance PRIMARY KEY (id),
+	CONSTRAINT fk_attend_stu FOREIGN KEY (stu_id) REFERENCES USERS(id),
+	CONSTRAINT fk_attend_course FOREIGN KEY (course_id) REFERENCES COURSES(id)
+);
+
+DROP TABLE IF EXISTS RATING;
+
+CREATE TABLE RATING(
+	id INT NOT NULL AUTO_INCREMENT,
+	stu_id CHAR(10) NOT NULL,
+	course_id INT NOT NULL,
+	label_no VARCHAR(20),
+	score INT NOT NULL,
+	CONSTRAINT pk_rating PRIMARY KEY (id),
+	CONSTRAINT fk_rating_stu FOREIGN KEY (stu_id) REFERENCES USERS(id),
+	CONSTRAINT fk_rating_course FOREIGN KEY (course_id) REFERENCES COURSES(id)
+);
+
+DROP TABLE IF EXISTS RATING_LABEL;
+
+CREATE TABLE RATING_LABEL(
+	id INT NOT NULL AUTO_INCREMENT,
+	comment VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_rating_label PRIMARY KEY (id)
+);
+
+INSERT INTO RATING_LABEL(comment) VALUES('awesome'),('great'),('not bad');
+
+
