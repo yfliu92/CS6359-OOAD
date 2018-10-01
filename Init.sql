@@ -10,7 +10,6 @@ CREATE TABLE USERS (
 	id CHAR(10) NOT NULL,
     password char(10) DEFAULT NULL,
 	f_name VARCHAR(20) NOT NULL,
-	m_name VARCHAR(20),
 	l_name VARCHAR(20) NOT NULL,
 	email VARCHAR(30)  ,
 	school VARCHAR(10) ,
