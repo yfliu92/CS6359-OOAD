@@ -2951,9 +2951,9 @@
 										"$ref": "AAAAAAFmF/+34w8rmWA="
 									},
 									"font": "Arial;13;0",
-									"left": 405,
+									"left": 404,
 									"top": 291,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3548,7 +3548,8 @@
 								"$ref": "AAAAAAFmF/4eJQtWdYA="
 							},
 							"name": "id",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3556,7 +3557,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFmF/4eJQtWdYA="
 							},
-							"name": "name"
+							"name": "name",
+							"type": ""
 						}
 					]
 				}
