@@ -55,11 +55,39 @@ public class UserDaoImpl implements UserDao {
 				user.setId(rs.getString(1));
 				user.setPassword(rs.getString(2));
 				user.setF_name(rs.getString(3));
+				user.setUser_type(rs.getInt(8));
 			}
 			conn.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}
+		return user;
+	}
+	
+	public User getUser(String id) {
+		User user = new User();
+		
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("select * from users where id=?");
+			ps.setString(1, id);
+
+			ResultSet rs = ps.executeQuery();
+			if(rs!=null){
+				user.setId(rs.getString(1));
+				user.setPassword(rs.getString(2));
+				user.setF_name(rs.getString(3));
+				user.setL_name(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				user.setSchool(rs.getString(6));
+				user.setYear(rs.getString(7));
+				user.setUser_type(rs.getInt(8));
+			}
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
 		return user;
 	}
 
