@@ -1,5 +1,5 @@
 <%@ page 
-import="java.util.List, domain.Course"
+import = "java.util.List,java.util.ArrayList,domain.User"
 language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,7 +20,6 @@ table, th, tr,td {
     border: 1px solid black;
 }
 </style>
-<%List<Course> list = (List<Course>)request.getAttribute("list"); %>
 <body>
 	<%@ include file = "./app/shared/header/header.jsp" %>
 	<main role="main">
@@ -28,41 +27,53 @@ table, th, tr,td {
       <div class="row">
        <%@ include file = "./app/shared/sidebar/sidebar.jsp" %>
         <div class="col-md-10 page-content-container">
-			<h1> ${message} !!! </h1>
-        <%if(list!=null){ %>
-        <h2>Current Courses</h2>
-        <form name="cform" action="CourseController">
+			<h1> All Users </h1>
+			<%if(request.getAttribute("message")!=null){ %>
+			<h2>${ message }</h2>
+			<%} %>
+			<form action="">
 			<table>
 			<tr>
-			<th>Term</th>
-			<th>Course Section<br>Course Number
-			</th>
-			<th>Course Name</th>
-			<th>Instructor</th>
-			<th>Schedule & Location</th>
-			<th>Capacity</th>
-			<th>Action</th>
+			<th>User ID</th>
+			<th>User Name</th>
+			<th>Email</th>
+			<th>School</th>
+			<th>Year</th>
+			<th>User Type</th>
 			</tr>
-			<%
-			for(Course c:list){%>
+			<%List<User> list = (ArrayList)request.getAttribute("ulist"); 
+			if(list.size()>0){
+			for(User u:list){%>
 			<tr>
-			<input style="display:none" name="id" value=<%=c.getCid() %>>
-			<th><%=c.getYear()+"-"+c.getSemester()%></th>
-			<th><%=c.getCno()+"."+c.getSno() %></th>
-			<th><%=c.getCname() %></th>
-			<th><%=c.getTeacher_name()%></th>
-			<th><%=c.getDays()+"  "+c.getStime()+"-"+c.getEtime()+"  "+c.getRoom()%></th>
-			<th><%=c.getCapacity() %></th>
-			<th><input type="submit" value="Edit" name="ebut" onclick="edit(this)"><input type="submit" value="Delete" name="dbut" onclick="del(this)"></th> 
+			<th><%=u.getId() %></th>
+			<th><%=u.getF_name()+" "+u.getL_name()%></th>
+			<th><%=u.getEmail() %></th>
+			<th><%=u.getSchool()%></th>
+			<th><%=u.getYear()%></th>
+			<th><%=u.getUser_type()==0?"Admin":u.getUser_type()==1?"Student":"Teacher"%></th>
 			</tr>
-			<%} %>
-			<input type="text" name="selectid" value="" style="display:none">
-		<%} %>
-		</div>
+			<%}} %>
+			</table>
+			</form>
+			<input type="button" value="Add User" onclick="showAdd()">
+			<div id="adiv" style="display:none">
+			<form name="addform" method=post action="AddUserController" >
+			<br>User ID: <input type="text" name="id">
+			<br>Password: <input type="text" name="pwd">
+			<br>First Name: <input type="text" name="fname">
+			<br>Last Name: <input type="text" name="lname">
+			<br>Email: <input type="text" name="email">
+			<br>School: <input type="text" name="school">
+			<br>Year: <input type="text" name="year">
+			<br>User Type: <select name="userType"><option value=0>Admin</option><option value=2>Teacher</option><option value=1>Student</option></select>
+			<br><input type="submit" value="Submit">
+			</form>
+			</div>
+        </div>
       </div>
     </div>
 	</main>
-	
+	<script src="user.js"></script>
 	<script src="./public/js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

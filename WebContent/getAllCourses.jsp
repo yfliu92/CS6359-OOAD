@@ -1,5 +1,5 @@
 <%@ page 
-import="java.util.List, domain.Course"
+import = "java.util.List,java.util.ArrayList,domain.Course"
 language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,7 +20,6 @@ table, th, tr,td {
     border: 1px solid black;
 }
 </style>
-<%List<Course> list = (List<Course>)request.getAttribute("list"); %>
 <body>
 	<%@ include file = "./app/shared/header/header.jsp" %>
 	<main role="main">
@@ -28,10 +27,11 @@ table, th, tr,td {
       <div class="row">
        <%@ include file = "./app/shared/sidebar/sidebar.jsp" %>
         <div class="col-md-10 page-content-container">
-			<h1> ${message} !!! </h1>
-        <%if(list!=null){ %>
-        <h2>Current Courses</h2>
-        <form name="cform" action="CourseController">
+			<h1> Courses </h1>
+			<%if(request.getAttribute("message")!=null){ %>
+			<h2><%=request.getAttribute("message") %></h2>
+			<%} %>
+			<form name="cform" action="CourseController">
 			<table>
 			<tr>
 			<th>Term</th>
@@ -43,7 +43,8 @@ table, th, tr,td {
 			<th>Capacity</th>
 			<th>Action</th>
 			</tr>
-			<%
+			<%List<Course> list = (ArrayList)request.getAttribute("courses"); 
+			if(list.size()>0){
 			for(Course c:list){%>
 			<tr>
 			<input style="display:none" name="id" value=<%=c.getCid() %>>
@@ -55,14 +56,16 @@ table, th, tr,td {
 			<th><%=c.getCapacity() %></th>
 			<th><input type="submit" value="Edit" name="ebut" onclick="edit(this)"><input type="submit" value="Delete" name="dbut" onclick="del(this)"></th> 
 			</tr>
-			<%} %>
+			<%}} %>
 			<input type="text" name="selectid" value="" style="display:none">
-		<%} %>
-		</div>
+			<input type="text" name="op" value="" style="display:none">
+			</table>
+			</form>
+        </div>
       </div>
     </div>
 	</main>
-	
+	<script src="course.js"></script>
 	<script src="./public/js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

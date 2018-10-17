@@ -9,8 +9,8 @@ package db;
 public interface MyDB {
 
 	String USER="root";
-	String PASS="123321";
-	String CONN_URL="jdbc:mysql://127.0.0.1:3306/LOC";
+	String PASS="123456";
+	String CONN_URL="jdbc:mysql://127.0.0.1:3306/LOC?verifyServerCertificate=false&useSSL=false";
 	
 	
 }

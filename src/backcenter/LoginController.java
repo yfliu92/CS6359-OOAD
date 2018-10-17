@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import daoImp.UserDaoImpl;
@@ -31,11 +32,18 @@ public class LoginController extends HttpServlet {
 		String submitType = request.getParameter("submit");
 		Login login = new Login(id, pass);
 		User user = userDao.validateUser(login);
+		HttpSession session = request.getSession();
 		
 		if(submitType.equals("login") && user!=null && user.getId()!=null){
+			session.setAttribute("id", user.getId());
+			session.setAttribute("type", user.getUser_type());
 			request.setAttribute("message", "Hello "+user.getId());
-			request.setAttribute("userType", user.getUser_type());
+			if(session.getAttribute("type").equals(0)) {
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			}
+			else if(session.getAttribute("type").equals(1)){
+				request.getRequestDispatcher("StudentController").forward(request, response);
+			}
 		}else if(submitType.equals("register")){
 			user.setF_name(request.getParameter("name"));
 			user.setId(request.getParameter("id"));
