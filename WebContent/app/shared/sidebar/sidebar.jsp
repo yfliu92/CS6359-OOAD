@@ -26,7 +26,7 @@
         <a href="StudentController" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
-        <a href="/app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
+        <a href="app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
     </div>
 
 
