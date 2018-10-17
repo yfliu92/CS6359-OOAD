@@ -45,7 +45,7 @@ public class UserController extends HttpServlet {
         List<User> list = adao.getAllUsers();
         request.setAttribute("ulist", list);
         request.setAttribute("message", message);
-        request.getRequestDispatcher(request.getContextPath() + "app/admin/userManage.jsp").forward(request, response);
+        request.getRequestDispatcher( "app/admin/userManage.jsp").forward(request, response);
     }
 
 }

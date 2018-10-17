@@ -42,7 +42,7 @@ public class CourseController extends HttpServlet {
             List<Course> list = cDao.getCourseList();
             request.setAttribute("courses", list);
             request.setAttribute("msg", msg);
-            request.getRequestDispatcher(request.getContextPath() + "app/admin/getAllCourses.jsp").forward(request, response);
+            request.getRequestDispatcher("app/admin/getAllCourses.jsp").forward(request, response);
         }
         // add course
         else if (op.equals("add")) {
@@ -91,7 +91,7 @@ public class CourseController extends HttpServlet {
             CourseDao cdao = new CourseDaoImpl();
             Course course = cdao.getCourse(id);
             request.setAttribute("course", course);
-            request.getRequestDispatcher(request.getContextPath() + "app/admin/editCourse.jsp").forward(request, response);
+            request.getRequestDispatcher("app/admin/editCourse.jsp").forward(request, response);
         }
         // delete course
         else { // op.equals("del")
