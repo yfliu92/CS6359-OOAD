@@ -94,7 +94,7 @@ public class StudentDaoImpl implements StudentDao {
 		if(!sno.equals("")) {
 			sb.append("c.section_no='"+sno+"' and ");
 		}
-		if(!prefix.equals("0")) {
+		if(prefix!=null) {
 			sb.append("c.prefix='"+prefix+"' and ");
 		}
 		if(!year.equals("")) {
@@ -103,7 +103,7 @@ public class StudentDaoImpl implements StudentDao {
 		if(!semester.equals("")) {
 			sb.append("c.semester='"+semester+"' and ");
 		}
-		if(!tid.equals("-1")) {
+		if(tid!=null) {
 			sb.append("c.teacher_id='"+tid+"'");
 		}
 		System.out.println(sb.toString());
