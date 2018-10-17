@@ -23,16 +23,17 @@
     </div>
     <%} else if (type == 1) {%>
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">student</a>
-    </div>
-
-    <%} else {%>
-
-    <div class="list-group">
         <a href="StudentController" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
         <a href="searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
+    </div>
+
+
+    <%} else {%>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">teacher</a>
     </div>
     <%} %>
 </div>
