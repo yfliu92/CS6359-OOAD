@@ -82,7 +82,7 @@ public class StudentDaoImpl implements StudentDao {
 		List<Course> list = new ArrayList<>();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select c.*, u.f_name,u.l_name from courses c left join Users u on c.teacher_id = u.id ");
-		if(!(cname.equals("")&&cno.equals("")&&sno.equals("")&&prefix.equals("0")&&year.equals("")&&semester.equals("")&&tid.equals("-1"))) {
+		if(!(cname.equals("")&&cno.equals("")&&sno.equals("")&&prefix==null&&year.equals("")&&semester.equals("")&&tid==null)) {
 			sb.append("where ");
 		}
 		if(!cname.equals("")) {
