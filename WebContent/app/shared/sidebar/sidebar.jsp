@@ -10,7 +10,7 @@
     <% if (type == 0) {%>
 
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action sidebar-home">Home</a>
+        <a href="welcome.jsp" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
         <a href="UserController" class="list-group-item list-group-item-action">User Manage</a>
