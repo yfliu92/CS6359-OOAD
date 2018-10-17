@@ -16,6 +16,6 @@ public class AddCourseController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(req.getContextPath() + "app/admin/addCourse.jsp");
+        req.getRequestDispatcher("app/admin/addCourse.jsp").forward(req, resp);;
     }
 }
