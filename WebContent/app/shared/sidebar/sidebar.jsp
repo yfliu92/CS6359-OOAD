@@ -19,14 +19,14 @@
         <a href="CourseController" class="list-group-item list-group-item-action">Current Courses</a>
     </div>
     <div class="list-group">
-        <a href="addCourse.jsp" class="list-group-item list-group-item-action">Add Course</a>
+        <a href="AddCourseController" class="list-group-item list-group-item-action">Add Course</a>
     </div>
     <%} else if (type == 1) {%>
     <div class="list-group">
         <a href="StudentController" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
-        <a href="searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
+        <a href="/app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
     </div>
 
 

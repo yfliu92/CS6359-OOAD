@@ -1,14 +1,12 @@
 <%@ page
-        import="java.util.List, domain.Course"
+        import="java.util.List,java.util.ArrayList,domain.Course"
         language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
-    List<Course> list = (List<Course>) request.getAttribute("list");
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,17 +23,23 @@
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/common.css">
 </head>
-
+<style type="text/css">
+    table, th, tr, td {
+        border: 1px solid black;
+    }
+</style>
 <body>
-<%@ include file="./app/shared/header/header.jsp" %>
+<%@ include file="../shared/header/header.jsp" %>
 <main role="main">
     <div class="container">
         <div class="row">
-            <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
+            <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <h1> ${message} !!! </h1>
-                <%if (list != null) { %>
-                <h2>Current Courses</h2>
+                <h1> Courses </h1>
+                <%if (request.getAttribute("message") != null) { %>
+                <h2><%=request.getAttribute("message") %>
+                </h2>
+                <%} %>
                 <form name="cform" action="CourseController">
                     <table>
                         <tr>
@@ -48,8 +52,11 @@
                             <th>Capacity</th>
                             <th>Action</th>
                         </tr>
-                            <%
-			for(Course c:list){%>
+                        <%
+                            List<Course> list = (ArrayList) request.getAttribute("courses");
+                            if (list.size() > 0) {
+                                for (Course c : list) {
+                        %>
                         <tr>
                             <input style="display:none" name="id" value=<%=c.getCid() %>>
                             <th><%=c.getYear() + "-" + c.getSemester()%>
@@ -70,14 +77,19 @@
                                                                                                           onclick="del(this)">
                             </th>
                         </tr>
-                            <%} %>
+                        <%
+                                }
+                            }
+                        %>
                         <input type="text" name="selectid" value="" style="display:none">
-                            <%} %>
+                        <input type="text" name="op" value="" style="display:none">
+                    </table>
+                </form>
             </div>
         </div>
     </div>
 </main>
-
+<script src="app/js/course.js"></script>
 <script src="public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
