@@ -70,9 +70,9 @@
                                          value=<%=course.getSemester() %> style="width:70px">
                     <br>Course Prefix: <select name="prefix">
                 </select>
-                    <br>Course Number: <input type="text" name="cno" value=<%=course.getCno() %>/>
-                    <br>Section Number: <input type="text" name="sno" value=<%=course.getSno() %>/>
-                    <br>Course Name: <input type="text" name="cname" value=<%=cname%>/>
+                    <br>Course Number: <input type="text" name="cno" value=<%=course.getCno() %> />
+                    <br>Section Number: <input type="text" name="sno" value=<%=course.getSno() %> />
+                    <br>Course Name: <input type="text" name="cname" value=<%=cname%> />
                     <br>Start_Date: <input type="text" name="syear" value=<%=course.getYear() %> style="display:none">
                     <select name="smonth" onclick="getMonth(1)" onchange="getDay(1)">
                         <option value=0>Month</option>
@@ -114,7 +114,7 @@
                         <option value="pm" <%if (ap2.equals("pm")) { %> selected="selected" <%} %>>PM</option>
                     </select>
                     <br>Room: <input type="text" name="room" value=<%=room %>/>
-                    <br>Capacity: <input type="text" name="capacity" value=<%=course.getCapacity() %>/>
+                    <br>Capacity: <input type="text" name="capacity" value=<%=course.getCapacity() %> />
                     <br>Instructor: <select name="teacher">
                     <% for (User u : list) {%>
                     <option value=<%=u.getId()%> <%if(course.getTeacher_id().equals(u.getId())){%> selected="selected" <%} %>><%=u.getF_name() + " " + u.getL_name() %>
