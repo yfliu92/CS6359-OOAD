@@ -5,31 +5,33 @@
 <%--userType == 2: teacher--%>
 <%
     int type = (int) session.getAttribute("type");
+    String path1 = request.getContextPath();
+    String basePath1 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path1 + "/";
 %>
 <div class="col-md-2 side-bar">
     <% if (type == 0) {%>
 
     <div class="list-group">
-        <a href="welcome.jsp" class="list-group-item list-group-item-action sidebar-home">Home</a>
+        <a href="<%=basePath1%>welcome.jsp" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
-        <a href="UserController" class="list-group-item list-group-item-action">User Manage</a>
+        <a href="<%=basePath1%>UserController" class="list-group-item list-group-item-action">User Manage</a>
     </div>
     <div class="list-group">
-        <a href="CourseController" class="list-group-item list-group-item-action">Current Courses</a>
+        <a href="<%=basePath1%>CourseController" class="list-group-item list-group-item-action">Current Courses</a>
     </div>
     <div class="list-group">
-        <a href="AddCourseController" class="list-group-item list-group-item-action">Add Course</a>
+        <a href="<%=basePath1%>AddCourseController" class="list-group-item list-group-item-action">Add Course</a>
     </div>
     <%} else if (type == 1) {%>
     <div class="list-group">
-        <a href="StudentController" class="list-group-item list-group-item-action sidebar-home">Home</a>
+        <a href="<%=basePath1%>StudentController" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
-        <a href="app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find Course</a>
+        <a href="<%=basePath1%>app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find
+        Course</a>
     </div>
-
-
     <%} else {%>
 
     <div class="list-group">
