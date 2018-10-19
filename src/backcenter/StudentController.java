@@ -55,7 +55,7 @@ public class StudentController extends HttpServlet {
 			List<Course> list = sdao.getStuCourse(id);
 			request.setAttribute("message", "Hello "+id);
 			request.setAttribute("list", list);
-			System.out.println(list.size());
+			//System.out.println(list.size());
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 		else if(request.getParameter("op").equals("search")) {
@@ -73,7 +73,7 @@ public class StudentController extends HttpServlet {
 		// student register the course
 		else if(request.getParameter("op").equals("register")) {
 			String cid = request.getParameter("selectid");
-			System.out.println(cid+"---"+id);
+			//System.out.println(cid+"---"+id);
 			String msg = sdao.register(cid, id);
 			request.setAttribute("update", "yes");
 			request.setAttribute("updmsg", msg);
