@@ -7,6 +7,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
     List<Course> list = (List<Course>) request.getAttribute("list");
+    String updmsg = (String)request.getAttribute("updmsg");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,6 +35,7 @@
             <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
                 <h1> ${message} !!! </h1>
+                <h2> ${updmsg} </h2>
                 <%if (list != null) { %>
                 <h2>Current Courses</h2>
                 <form name="cform" action="CourseController">
@@ -64,10 +66,8 @@
                             </th>
                             <th><%=c.getCapacity() %>
                             </th>
-                            <th><input type="submit" value="Edit" name="ebut" onclick="edit(this)"><input type="submit"
-                                                                                                          value="Delete"
-                                                                                                          name="dbut"
-                                                                                                          onclick="del(this)">
+                            <th><input type="submit" value="Detail" name="ebut" onclick="">
+                            <input type="submit" value="Drop" name="dbut" onclick="">
                             </th>
                         </tr>
                             <%} %>

@@ -11,7 +11,7 @@ import domain.User;
 *
 */
 public interface StudentDao {
-	public boolean enroll();
+	public String register(String course_id,String stu_id);
 	public boolean drop();
 	public User getStuInfo(String id);
 	public List<Course> getStuCourse(String id);

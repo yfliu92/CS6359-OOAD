@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AdminDao;
 import dao.StudentDao;
+import daoImp.AdminDaoImpl;
 import daoImp.StudentDaoImpl;
 import domain.Course;
+import domain.User;
 
 /**
  * Servlet implementation class StudentController
@@ -45,13 +48,14 @@ public class StudentController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("op")==null) {
-			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("id");
-			StudentDao sdao = new StudentDaoImpl();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		StudentDao sdao = new StudentDaoImpl();
+		if(request.getParameter("op")==null|| request.getAttribute("update")!=null) {
 			List<Course> list = sdao.getStuCourse(id);
 			request.setAttribute("message", "Hello "+id);
 			request.setAttribute("list", list);
+			System.out.println(list.size());
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 		else if(request.getParameter("op").equals("search")) {
@@ -62,10 +66,18 @@ public class StudentController extends HttpServlet {
 			String sno = request.getParameter("sno");
 			String cname = request.getParameter("cname").replaceAll("[^\\p{ASCII}]", " ");
 			String tid = request.getParameter("teacher");
-			System.out.println(year+"--"+semester+"--"+prefix+"--"+cno+"--"+sno+"--"+cname+"--"+tid);
-			StudentDao sdao = new StudentDaoImpl();
-			sdao.searchCourse(cname, cno, sno, prefix, year, semester, tid);
-			
+			List<Course> clist = sdao.searchCourse(cname, cno, sno, prefix, year, semester, tid);
+			request.setAttribute("clist", clist);
+			request.getRequestDispatcher("app/student/searchCourse.jsp").forward(request, response);
+		}
+		// student register the course
+		else if(request.getParameter("op").equals("register")) {
+			String cid = request.getParameter("selectid");
+			System.out.println(cid+"---"+id);
+			String msg = sdao.register(cid, id);
+			request.setAttribute("update", "yes");
+			request.setAttribute("updmsg", msg);
+			request.getRequestDispatcher("StudentController").forward(request, response);
 		}
 	}
 

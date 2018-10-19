@@ -1,5 +1,5 @@
 <%@ page
-        import="java.util.List,daoImp.AdminDaoImpl,dao.AdminDao,domain.User"
+        import="java.util.List,daoImp.AdminDaoImpl,dao.AdminDao,domain.User,domain.Course"
         language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 
@@ -7,6 +7,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+    List<Course> clist = (List<Course>)request.getAttribute("clist");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,9 +44,10 @@
                     <br>Course Name: <input type="text" name="cname"/>
                     <br>Instructor: <select name="teacher">
                     <option value=-1>Any Instructor</option>
-                    <% AdminDao adao = new AdminDaoImpl();
-                        List<User> list = adao.getAllTeachers();
-                        for (User u : list) {%>
+                    <% 
+        			AdminDao adao = new AdminDaoImpl();
+                    List<User> ulist = adao.getAllTeachers();
+                    for (User u : ulist) {%>
                     <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
                     </option>
                     <%} %>
@@ -53,10 +55,59 @@
                     <br><input type="submit" value="Search Course"/>
                     <input type="text" name="op" value="search" style="display:none">
                 </form>
+                <%if(clist!=null){
+                	if(clist.size()==0){%>
+                <th>No course found!</th>
+                <%}
+                else{ %>
+                <form name="cform" action="" method=post>
+                	<table>
+                		<tr>
+                            <th>Term</th>
+                            <th>Course Section<br>Course Number
+                            </th>
+                            <th>Course Name</th>
+                            <th>Instructor</th>
+                            <th>Schedule & Location</th>
+                            <th>Capacity</th>
+                            <th>Action</th>
+                        </tr>
+                        <%
+                                for (Course c : clist) {
+                        %>
+                        <tr>
+                            <input style="display:none" name="id" value=<%=c.getCid() %>>
+                            <th><%=c.getYear() + "-" + c.getSemester()%>
+                            </th>
+                            <th><%=c.getCno() + "." + c.getSno() %>
+                            </th>
+                            <th><%=c.getCname() %>
+                            </th>
+                            <th><%=c.getTeacher_name()%>
+                            </th>
+                            <th><%=c.getDays() + "  " + c.getStime() + "-" + c.getEtime() + "  " + c.getRoom()%>
+                            </th>
+                            <th><%=c.getCapacity() %>
+                            </th>
+                            <th><input type="submit" value="Detail" name="ebut" onclick="edit(this)">
+                            <input type="submit" value="Register" name="rbut" onclick="reg(this)">
+                            </th>
+                        </tr>
+                        <%
+                                }
+                        %>
+                        <input type="text" name="selectid" value="" style="display:none">
+                        <input type="text" name="op" value="" style="display:none">
+                    </table>
+                
+                </form>
+                <%} 
+                }%>
             </div>
         </div>
     </div>
 </main>
+<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
