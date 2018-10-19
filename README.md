@@ -15,10 +15,15 @@
 - WebContent
 	- app
 		- shared (shared component, EG, header, side bar, footer)
-		- styles 	 	
+		- admin (jsp files related to admin functionality)
+		- teacher (jsp files related to teacher functionality)
+		- student (jsp files related to student functionality)	 	
+		- styles
+		- js (all javascript files used in different jsp)
 	- public (public resources)
 		- assets
 		- css
+		- js
 
 *************
 - Only run `git pull --rebase` when update
