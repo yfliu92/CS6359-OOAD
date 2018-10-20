@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AdminDao;
+import dao.CourseDao;
 import dao.StudentDao;
 import daoImp.AdminDaoImpl;
+import daoImp.CourseDaoImpl;
 import daoImp.StudentDaoImpl;
 import domain.Course;
 import domain.User;
@@ -75,6 +77,25 @@ public class StudentController extends HttpServlet {
 			String cid = request.getParameter("selectid");
 			//System.out.println(cid+"---"+id);
 			String msg = sdao.register(cid, id);
+			request.setAttribute("update", "yes");
+			request.setAttribute("updmsg", msg);
+			request.getRequestDispatcher("StudentController").forward(request, response);
+		}
+		// show course detail
+		else if(request.getParameter("op").equals("show")) {
+			String cid = request.getParameter("selectid");
+			CourseDao cdao = new CourseDaoImpl();
+			Course course = cdao.getCourse(cid);
+			int num = cdao.getStuNum(cid);
+			request.setAttribute("course", course);
+			request.setAttribute("num", num);
+			request.getRequestDispatcher("app/student/courseDetail.jsp").forward(request, response);
+		}
+		
+		// drop course
+		else if(request.getParameter("op").equals("drop")) {
+			String cid = request.getParameter("selectid");
+			String msg = sdao.drop(cid, id);
 			request.setAttribute("update", "yes");
 			request.setAttribute("updmsg", msg);
 			request.getRequestDispatcher("StudentController").forward(request, response);

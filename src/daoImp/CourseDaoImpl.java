@@ -62,7 +62,7 @@ public class CourseDaoImpl implements CourseDao {
 		Connection conn;
 		PreparedStatement ps;
 		DbManager db = new DbManager();
-		String sql = "select * from Courses where id = ?;";
+		String sql = "select c.*,u.f_name,u.l_name from Courses c left join Users u on c.teacher_id = u.id where c.id = ?";
 		conn = db.getConnection();
 		Course c = new Course();
 		try {
@@ -85,11 +85,34 @@ public class CourseDaoImpl implements CourseDao {
 			c.setStime(rs.getString(13));
 			c.setEtime(rs.getString(14));
 			c.setTeacher_id(rs.getString(15));
+			c.setSyllabus_no(rs.getString(16));
+			c.setTeacher_name(rs.getString(17)+" "+rs.getString(18));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return c;
 		
+	}
+
+	// get current student number that has register this course
+	@Override
+	public int getStuNum(String id) {
+		Connection conn;
+		PreparedStatement ps;
+		DbManager db = new DbManager();
+		String sql = "select count(*) from stu_courses where course_id = ?;";
+		conn = db.getConnection();
+		int res = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			res = rs.getInt(1);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 }

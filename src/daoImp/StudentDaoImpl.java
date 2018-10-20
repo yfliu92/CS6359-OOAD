@@ -51,9 +51,23 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public boolean drop() {
-		// TODO Auto-generated method stub
-		return false;
+	public String drop(String cid,String uid) {
+		DbManager db = new DbManager();
+		Connection conn = null;
+		PreparedStatement ps;
+		try {
+			conn = db.getConnection(); 
+			ps = conn.prepareStatement("delete from stu_courses where stu_id=? and course_id=?;");
+			ps.setString(1, uid);
+			ps.setInt(2, Integer.parseInt(cid));
+			int status = ps.executeUpdate();
+			if(status==1) {
+				return "Successfully drop the Course!";
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "Error Occurred!";
 	}
 
 	@Override
@@ -111,7 +125,7 @@ public class StudentDaoImpl implements StudentDao {
 			sb.append("where");
 		}
 		if(!cname.equals("")) {
-			sb.append(" c.course_name like '"+cname+"' and");
+			sb.append(" c.course_name like '%"+cname+"%' and");
 		}
 		if(!cno.equals("")) {
 			sb.append(" c.course_no='"+cno+"' and");

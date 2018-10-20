@@ -60,7 +60,7 @@
                 <th>No course found!</th>
                 <%}
                 else{ %>
-                <form name="cform" action="" method=post>
+                <form name="cform" id="cform" action="StudentController" method=post>
                 	<table>
                 		<tr>
                             <th>Term</th>
@@ -89,8 +89,8 @@
                             </th>
                             <th><%=c.getCapacity() %>
                             </th>
-                            <th><input type="submit" value="Detail" name="ebut" onclick="edit(this)">
-                            <input type="submit" value="Register" name="rbut" onclick="reg(this)">
+                            <th><input type="submit" value="Detail" name="sbut" onclick="show(this)">
+                            <input type="button" value="Register" name="rbut" onclick="reg(this)">
                             </th>
                         </tr>
                         <%

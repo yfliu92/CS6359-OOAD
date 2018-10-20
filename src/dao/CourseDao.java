@@ -12,4 +12,5 @@ import domain.Course;
 public interface CourseDao {
 	public List<Course> getCourseList();
 	public Course getCourse(String id);
+	public int getStuNum(String id);
 }

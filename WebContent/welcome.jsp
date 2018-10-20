@@ -38,7 +38,7 @@
                 <h2> ${updmsg} </h2>
                 <%if (list != null) { %>
                 <h2>Current Courses</h2>
-                <form name="cform" action="CourseController">
+                <form name="cform" id="cform" action="StudentController" method=post>
                     <table>
                         <tr>
                             <th>Term</th>
@@ -66,18 +66,22 @@
                             </th>
                             <th><%=c.getCapacity() %>
                             </th>
-                            <th><input type="submit" value="Detail" name="ebut" onclick="">
-                            <input type="submit" value="Drop" name="dbut" onclick="">
+                            <th><input type="submit" value="Detail" name="sbut" onclick="show(this)">
+                            <input type="button" value="Drop" name="dbut" onclick="drop(this)">
                             </th>
                         </tr>
                             <%} %>
-                        <input type="text" name="selectid" value="" style="display:none">
+                        	<input type="text" name="selectid" value="" style="display:none">
+                        	<input type="text" name="op" value="" style="display:none">
                             <%} %>
+                      </table>
+                 </form>
             </div>
         </div>
     </div>
 </main>
 
+<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
