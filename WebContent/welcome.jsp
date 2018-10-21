@@ -39,41 +39,44 @@
                 <%if (list != null) { %>
                 <h2>Current Courses</h2>
                 <form name="cform" id="cform" action="StudentController" method=post>
-                    <table>
+                    <table class="table">
+                        <thead class="thead-light">
                         <tr>
                             <th>Term</th>
-                            <th>Course Section<br>Course Number
-                            </th>
+                            <th>Course Num/Sec</th>
                             <th>Course Name</th>
                             <th>Instructor</th>
-                            <th>Schedule & Location</th>
-                            <th>Capacity</th>
+                            <th>Schedule</th>
+                            <th>Location</th>
                             <th>Action</th>
                         </tr>
+                        </thead>
+                        <tbody>
                             <%
-			for(Course c:list){%>
-                        <tr>
-                            <input style="display:none" name="id" value=<%=c.getCid() %>>
-                            <th><%=c.getYear() + "-" + c.getSemester()%>
-                            </th>
-                            <th><%=c.getCno() + "." + c.getSno() %>
-                            </th>
-                            <th><%=c.getCname() %>
-                            </th>
-                            <th><%=c.getTeacher_name()%>
-                            </th>
-                            <th><%=c.getDays() + "  " + c.getStime() + "-" + c.getEtime() + "  " + c.getRoom()%>
-                            </th>
-                            <th><%=c.getCapacity() %>
-                            </th>
-                            <th><input type="submit" value="Detail" name="sbut" onclick="show(this)">
-                            <input type="button" value="Drop" name="dbut" onclick="drop(this)">
-                            </th>
-                        </tr>
+                                for(Course c:list){%>
+                            <tr>
+                                <input style="display:none" name="id" value=<%=c.getCid() %>>
+                                <th><%=c.getYear() + "-" + c.getSemester()%>
+                                </th>
+                                <th><%=c.getCno() + "." + c.getSno() %>
+                                </th>
+                                <th><%=c.getCname() %>
+                                </th>
+                                <th><%=c.getTeacher_name()%>
+                                </th>
+                                <th><%=c.getStime().substring(0,5) + "-" + c.getEtime().substring(0,5)%>
+                                </th>
+                                <th><%=c.getRoom()%>
+                                </th>
+                                <th><button type="submit" class="btn btn-primary" value="Detail" name="sbut" onclick="show(this)">Detail</button>
+                                    <button type="button" class="btn btn-danger" value="Drop" name="dbut" onclick="drop(this)">Drop</button>
+                                </th>
+                            </tr>
                             <%} %>
-                        	<input type="text" name="selectid" value="" style="display:none">
-                        	<input type="text" name="op" value="" style="display:none">
+                            <input type="text" name="selectid" value="" style="display:none">
+                            <input type="text" name="op" value="" style="display:none">
                             <%} %>
+                        </tbody>
                       </table>
                  </form>
             </div>

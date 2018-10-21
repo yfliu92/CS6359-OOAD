@@ -34,27 +34,80 @@
             <div class="col-md-10 page-content-container">
                 <h1>Search Course</h1>
                 <form name="form1" action="StudentController" method=post>
-                    <br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">
-                    <br>Semester: <input type="text" name="semester" style="width:70px">
-                    <br>Course Prefix: <select name="prefix" onclick="getPrefix()">
-                    <option value=0>Select Course Prefix</option>
-                </select>
-                    <br>Course Number: <input type="text" name="cno"/>
-                    <br>Section Number: <input type="text" name="sno"/>
-                    <br>Course Name: <input type="text" name="cname"/>
-                    <br>Instructor: <select name="teacher">
-                    <option value=-1>Any Instructor</option>
-                    <% 
-        			AdminDao adao = new AdminDaoImpl();
-                    List<User> ulist = adao.getAllTeachers();
-                    for (User u : ulist) {%>
-                    <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
-                    </option>
-                    <%} %>
-                </select>
-                    <br><input type="submit" value="Search Course"/>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="year">Year</label>
+                            <input type="text" name="year" onchange="changeyear()" class="form-control" id="year" placeholder="Year">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="semester">Semester</label>
+                            <input type="text" name="email" class="form-control" id="semester" placeholder="Semester">
+                        </div>
+                    </div>
+                    <%--<br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">--%>
+                    <%--<br>Semester: <input type="text" name="semester" style="width:70px">--%>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="prefix">Course Prefix</label>
+                            <select class="custom-select" id="prefix" name="prefix" onclick="getPrefix()">
+                                <option value=0>Select Course Prefix</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="course_num">Course Number</label>
+                            <input type="text" name="cno" class="form-control" id="course_num" placeholder="Course Number">
+                        </div>
+                    </div>
+                    <%--<br>Course Prefix: <select name="prefix" onclick="getPrefix()">--%>
+                    <%--<option value=0>Select Course Prefix</option>--%>
+                <%--</select>--%>
+                    <%--<br>Course Number: <input type="text" name="cno"/>--%>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sec_num">Course Number</label>
+                            <input type="text" name="sno" class="form-control" id="sec_num" placeholder="Section Number">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="course_name">Course Name</label>
+                            <input type="text" name="cname" class="form-control" id="course_name" placeholder="Course Name">
+                        </div>
+                    </div>
+                    <%--<br>Section Number: <input type="text" name="sno"/>--%>
+                    <%--<br>Course Name: <input type="text" name="cname"/>--%>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="instructor">Instructor</label>
+                            <select name="teacher" id="instructor" class="custom-select">
+                                <option value=-1>Any Instructor</option>
+                                <%
+                                    AdminDao adao = new AdminDaoImpl();
+                                    List<User> ulist = adao.getAllTeachers();
+                                    for (User u : ulist) {%>
+                                <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
+                                </option>
+                                <%} %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <button type="submit" name="submit" value="Search Course" class="btn btn-primary">Search Course</button>
+                        </div>
+                    </div>
+                    <%--<br>Instructor: <select name="teacher">--%>
+                    <%--<option value=-1>Any Instructor</option>--%>
+                    <%--<% --%>
+        			<%--AdminDao adao = new AdminDaoImpl();--%>
+                    <%--List<User> ulist = adao.getAllTeachers();--%>
+                    <%--for (User u : ulist) {%>--%>
+                    <%--<option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>--%>
+                    <%--</option>--%>
+                    <%--<%} %>--%>
+                <%--</select>--%>
+                    <%--<br><input type="submit" value="Search Course"/>--%>
                     <input type="text" name="op" value="search" style="display:none">
                 </form>
+
                 <%if(clist!=null){
                 	if(clist.size()==0){%>
                 <th>No course found!</th>
@@ -62,16 +115,17 @@
                 else{ %>
                 <form name="cform" id="cform" action="StudentController" method=post>
                 	<table>
-                		<tr>
+                        <thead class="thead-light">
+                        <tr>
                             <th>Term</th>
-                            <th>Course Section<br>Course Number
-                            </th>
+                            <th>Course Num/Sec</th>
                             <th>Course Name</th>
                             <th>Instructor</th>
-                            <th>Schedule & Location</th>
-                            <th>Capacity</th>
+                            <th>Schedule</th>
+                            <th>Location</th>
                             <th>Action</th>
                         </tr>
+                        </thead>
                         <%
                                 for (Course c : clist) {
                         %>
@@ -85,12 +139,12 @@
                             </th>
                             <th><%=c.getTeacher_name()%>
                             </th>
-                            <th><%=c.getDays() + "  " + c.getStime() + "-" + c.getEtime() + "  " + c.getRoom()%>
+                            <th><%=c.getStime().substring(0,5) + "-" + c.getEtime().substring(0,5)%>
                             </th>
-                            <th><%=c.getCapacity() %>
+                            <th><%=c.getRoom()%>
                             </th>
-                            <th><input type="submit" value="Detail" name="sbut" onclick="show(this)">
-                            <input type="button" value="Register" name="rbut" onclick="reg(this)">
+                            <th><button type="submit" class="btn btn-primary" value="Detail" name="sbut" onclick="show(this)">Detail</button>
+                                <button type="button" class="btn btn-success" value="Register" name="rbut" onclick="reg(this)">Register</button>
                             </th>
                         </tr>
                         <%
