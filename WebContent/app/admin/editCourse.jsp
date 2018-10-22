@@ -113,7 +113,7 @@
                         <option value="am" <%if (ap2.equals("am")) { %> selected="selected" <%} %>>AM</option>
                         <option value="pm" <%if (ap2.equals("pm")) { %> selected="selected" <%} %>>PM</option>
                     </select>
-                    <br>Room: <input type="text" name="room" value=<%=room %>/>
+                    <br>Room: <input type="text" name="room" value=<%=room %> />
                     <br>Capacity: <input type="text" name="capacity" value=<%=course.getCapacity() %> />
                     <br>Instructor: <select name="teacher">
                     <% for (User u : list) {%>
