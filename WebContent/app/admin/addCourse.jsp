@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<%= basePath %>public/css/common.css">
+    <link rel="stylesheet" href="<%= basePath %>app/styles/admin/admin.css">
 </head>
 <body>
 <%@ include file="../shared/header/header.jsp" %>
@@ -30,58 +31,137 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <h1>Add Course</h1>
+                <h5>Add Course</h5>
                 <form name="form1" action="CourseController" method=post>
-                    <br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">
-                    <br>Semester: <input type="text" name="semester" style="width:70px">
-                    <br>Course Prefix: <select name="prefix" onclick="getPrefix()">
-                    <option value=0>Select Course Prefix</option>
-                </select>
-                    <br>Course Number: <input type="text" name="cno"/>
-                    <br>Section Number: <input type="text" name="sno"/>
-                    <br>Course Name: <input type="text" name="cname"/>
-                    <br>Start_Date: <input type="text" name="syear" style="display:none">
-                    <select name="smonth" onclick="getMonth(1)" onchange="getDay(1)">
-                        <option value=0>Month</option>
-                    </select>
-                    <select name="sday">
-                        <option value=0>Day</option>
-                    </select>
-                    <br>End_Date: <input type="text" name="eyear" style="display:none">
-                    <select name="emonth" onclick="getMonth(0)" onchange="getDay(0)">
-                        <option value=0>Month</option>
-                    </select>
-                    <select name="eday">
-                        <option value=0>Day</option>
-                    </select>
-                    <br>Days:
-                    <input type="checkbox" name="days" value="M"/>Monday
-                    <input type="checkbox" name="days" value="Tu"/>Tuesday
-                    <input type="checkbox" name="days" value="W"/>Wednesday
-                    <input type="checkbox" name="days" value="Th"/>Thursday
-                    <input type="checkbox" name="days" value="F"/>Friday
-                    <input type="checkbox" name="days" value="Sa"/>Saturday
-                    <input type="checkbox" name="days" value="Su"/>Sunday
-                    <br>Time: <input type="text" name="stime" style="width: 60px"><select name="ap1">
-                    <option value="am">AM</option>
-                    <option value="pm">PM</option>
-                </select>
-                    to
-                    <input type="text" name="etime" style="width: 60px"><select name="ap2">
-                    <option value="am">AM</option>
-                    <option value="pm">PM</option>
-                </select> #format as 08:30
-                    <br>Room: <input type="text" name="room"/>
-                    <br>Capacity: <input type="text" name="capacity"/>
-                    <br>Instructor: <select name="teacher">
-                    <% AdminDao adao = new AdminDaoImpl();
-                        List<User> list = adao.getAllTeachers();
-                        for (User u : list) {%>
-                    <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
-                    </option>
-                    <%} %>
-                </select>
-                    <br><input type="submit" value="Add Course"/>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="year">Year</label>
+                            <input type="text" name="year" class="form-control" id="year" placeholder="Year">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="semester">Semester</label>
+                            <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester">
+                        </div>
+                    </div>
+                    <%--<br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">--%>
+                    <%--<br>Semester: <input type="text" name="semester" style="width:70px">--%>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="prefix">Course Prefix</label>
+                            <select id="prefix" class="custom-select" name="prefix" onclick="getPrefix()">
+                                <option value=0>Select Course Prefix</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="number">Course Number</label>
+                            <input type="text" name="cno" class="form-control" id="number" placeholder="Course Number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sec">Section Number</label>
+                            <input type="text" id="sec" name="sno" class="form-control" placeholder="Section Number"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cname">Course Name</label>
+                            <input type="text" name="cname" class="form-control" id="cname" placeholder="Course Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Start Date</label>
+                            <select class="custom-select" name="smonth" onclick="getMonth(1)" onchange="getDay(1)">
+                                <option value=0>Month</option>
+                            </select>
+                            <select class="custom-select" name="sday">
+                                <option value=0>Day</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>End Date</label>
+                            <select class="custom-select" name="emonth" onclick="getMonth(0)" onchange="getDay(0)">
+                                <option value=0>Month</option>
+                            </select>
+                            <select class="custom-select" name="eday">
+                                <option value=0>Day</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="M" name="days">Monday</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="Tu" name="days">Tuesday</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="W" name="days">Wednesday</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="Th" name="days">Thursday</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="F" name="days">Friday</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="Sa" name="days">Saturday</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="s_time">Time</label>
+                            <input type="text" name="stime">
+                            <select id="s_time" name="ap1">
+                                <option value="am">AM</option>
+                                <option value="pm">PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="e_time">To</label>
+                            <input type="text" name="etime">
+                            <select id="e_time" name="ap2">
+                                <option value="am">AM</option>
+                                <option value="pm">PM</option>
+                            </select>
+                            <span>&nbsp;(format as 08:30)</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="room">Room</label>
+                            <input type="text" name="room" class="form-control" id="room" placeholder="Room Number">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="capacity">Capacity</label>
+                            <input type="text" name="capacity" class="form-control" id="capacity" placeholder="Capacity">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="teacher">Instructor</label>
+                            <select name="teacher" id="teacher" class="custom-select">
+                                <% AdminDao adao = new AdminDaoImpl();
+                                    List<User> list = adao.getAllTeachers();
+                                    for (User u : list) {%>
+                                <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
+                                </option>
+                                <%} %>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" value="Add Course" class="btn btn-success">Add Course</button>
                     <input type="text" name="op" value="add" style="display:none">
                 </form>
             </div>

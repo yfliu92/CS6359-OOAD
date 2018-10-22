@@ -23,11 +23,6 @@
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/common.css">
 </head>
-<style type="text/css">
-    table, th, tr, td {
-        border: 1px solid black;
-    }
-</style>
 <body>
 <%@ include file="../shared/header/header.jsp" %>
 <main role="main">
@@ -35,52 +30,58 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <h1> Courses </h1>
+                <h5> Courses </h5>
                 <%if (request.getAttribute("message") != null) { %>
                 <h2><%=request.getAttribute("message") %>
                 </h2>
                 <%} %>
                 <form name="cform" action="CourseController">
-                    <table>
+                    <table class="table">
+                        <thead class="thead-light">
                         <tr>
                             <th>Term</th>
-                            <th>Course Section<br>Course Number
+                            <th>Course#
                             </th>
-                            <th>Course Name</th>
-                            <th>Instructor</th>
-                            <th>Schedule & Location</th>
+                            <th>Name</th>
+                            <th>Inst.</th>
+                            <th>Schedule</th>
+                            <th>Location</th>
                             <th>Capacity</th>
                             <th>Action</th>
                         </tr>
-                        <%
-                            List<Course> list = (ArrayList) request.getAttribute("courses");
-                            if (list.size() > 0) {
-                                for (Course c : list) {
-                        %>
-                        <tr>
-                            <input style="display:none" name="id" value=<%=c.getCid() %>>
-                            <th><%=c.getYear() + "-" + c.getSemester()%>
-                            </th>
-                            <th><%=c.getCno() + "." + c.getSno() %>
-                            </th>
-                            <th><%=c.getCname() %>
-                            </th>
-                            <th><%=c.getTeacher_name()%>
-                            </th>
-                            <th><%=c.getDays() + "  " + c.getStime() + "-" + c.getEtime() + "  " + c.getRoom()%>
-                            </th>
-                            <th><%=c.getCapacity() %>
-                            </th>
-                            <th><input type="submit" value="Edit" name="ebut" onclick="edit(this)"><input type="submit"
-                                                                                                          value="Delete"
-                                                                                                          name="dbut"
-                                                                                                          onclick="del(this)">
-                            </th>
-                        </tr>
-                        <%
+                        </thead>
+                        <tbody>
+                            <%
+                                List<Course> list = (ArrayList) request.getAttribute("courses");
+                                if (list.size() > 0) {
+                                    for (Course c : list) {
+                            %>
+                            <tr>
+                                <input style="display:none" name="id" value=<%=c.getCid() %>>
+                                <th><%=c.getYear() + "-" + c.getSemester()%>
+                                </th>
+                                <th><%=c.getCno() + "." + c.getSno() %>
+                                </th>
+                                <th><%=c.getCname() %>
+                                </th>
+                                <th><%=c.getTeacher_name()%>
+                                </th>
+                                <th><%=c.getStime().substring(0,5) + "-" + c.getEtime().substring(0,5)%>
+                                </th>
+                                <th>
+                                    <%=c.getRoom()%>
+                                </th>
+                                <th><%=c.getCapacity() %>
+                                </th>
+                                <th><button type="submit" class="btn btn-success btn-sm" value="Edit" name="ebut" onclick="edit(this)"> &nbsp Edit &nbsp</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" value="Delete" name="dbut" onclick="del(this)">Delete</button>
+                                </th>
+                            </tr>
+                            <%
+                                    }
                                 }
-                            }
-                        %>
+                            %>
+                        </tbody>
                         <input type="text" name="selectid" value="" style="display:none">
                         <input type="text" name="op" value="" style="display:none">
                     </table>

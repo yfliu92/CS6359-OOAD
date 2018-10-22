@@ -34,7 +34,7 @@
         <div class="row">
             <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <h1> ${message} !!! </h1>
+                <%--<h1> ${message} !!! </h1>--%>
                 <h2> ${updmsg} </h2>
                 <%if (list != null) { %>
                 <h2>Current Courses</h2>

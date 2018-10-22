@@ -22,12 +22,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<%= basePath %>public/css/common.css">
+    <link rel="stylesheet" href="<%= basePath %>app/styles/admin/admin.css">
 </head>
-<style type="text/css">
-    table, th, tr, td {
-        border: 1px solid black;
-    }
-</style>
 <body>
 <%@ include file="../shared/header/header.jsp" %>
 <main role="main">
@@ -35,62 +31,102 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <h1> All Users </h1>
+                <h5> All Users </h5>
                 <%if (request.getAttribute("message") != null) { %>
                 <h2>${ message }</h2>
                 <%} %>
                 <form action="">
-                    <table>
-                        <tr>
-                            <th>User ID</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>School</th>
-                            <th>Year</th>
-                            <th>User Type</th>
-                        </tr>
-                        <%
-                            List<User> list = (ArrayList) request.getAttribute("ulist");
-                            if (list.size() > 0) {
-                                for (User u : list) {
-                        %>
-                        <tr>
-                            <th><%=u.getId() %>
-                            </th>
-                            <th><%=u.getF_name() + " " + u.getL_name()%>
-                            </th>
-                            <th><%=u.getEmail() %>
-                            </th>
-                            <th><%=u.getSchool()%>
-                            </th>
-                            <th><%=u.getYear()%>
-                            </th>
-                            <th><%=u.getUser_type() == 0 ? "Admin" : u.getUser_type() == 1 ? "Student" : "Teacher"%>
-                            </th>
-                        </tr>
-                        <%
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>School</th>
+                                <th>Year</th>
+                                <th>User Type</th>
+                            </tr>
+                            <%
+                                List<User> list = (ArrayList) request.getAttribute("ulist");
+                                if (list.size() > 0) {
+                                    for (User u : list) {
+                            %>
+                            <tr>
+                                <th><%=u.getId() %>
+                                </th>
+                                <th><%=u.getF_name() + " " + u.getL_name()%>
+                                </th>
+                                <th><%=u.getEmail() %>
+                                </th>
+                                <th><%=u.getSchool()%>
+                                </th>
+                                <th><%=u.getYear()%>
+                                </th>
+                                <th><%=u.getUser_type() == 0 ? "Admin" : u.getUser_type() == 1 ? "Student" : "Teacher"%>
+                                </th>
+                            </tr>
+                            <%
+                                    }
                                 }
-                            }
-                        %>
+                            %>
+                        </tbody>
                     </table>
                 </form>
-                <input type="button" value="Add User" onclick="showAdd()">
-                <div id="adiv" style="display:none">
+                <button class="btn btn-primary" type="button" value="Add User" onclick="showAdd()">Add User</button>
+                <div id="adiv" class="addForm" style="display:none">
                     <form name="addform" method=post action="AddUserController">
-                        <br>User ID: <input type="text" name="id">
-                        <br>Password: <input type="text" name="pwd">
-                        <br>First Name: <input type="text" name="fname">
-                        <br>Last Name: <input type="text" name="lname">
-                        <br>Email: <input type="text" name="email">
-                        <br>School: <input type="text" name="school">
-                        <br>Year: <input type="text" name="year">
-                        <br>User Type:
-                        <select name="userType">
-                            <option value=0>Admin</option>
-                            <option value=2>Teacher</option>
-                            <option value=1>Student</option>
-                        </select>
-                        <br><input type="submit" value="Submit">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputUserName">User Name</label>
+                                <input type="text" name="id" class="form-control" id="inputUserName" placeholder="User name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" name="pwd" class="form-control" id="inputPassword" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputFistName">First Name</label>
+                                <input type="text" name="fname" class="form-control" id="inputFistName" placeholder="First name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" name="lname" class="form-control" id="inputLastName" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputSchool">School</label>
+                                <input type="text" name="school" class="form-control" id="inputSchool" placeholder="School">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputYear">Year</label>
+                                <input type="text" name="year" class="form-control" id="inputYear" placeholder="Year">
+                            </div>
+                        </div>
+                        <%--<br>User ID: <input type="text" name="id">--%>
+                        <%--<br>Password: <input type="text" name="pwd">--%>
+                        <%--<br>First Name: <input type="text" name="fname">--%>
+                        <%--<br>Last Name: <input type="text" name="lname">--%>
+                        <%--<br>Email: <input type="text" name="email">--%>
+                        <%--<br>School: <input type="text" name="school">--%>
+                        <%--<br>Year: <input type="text" name="year">--%>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="user_type">User Type</label>
+                                <select id="user_type" name="userType" class="custom-select">
+                                    <option value=0>Admin</option>
+                                    <option value=2>Teacher</option>
+                                    <option value=1>Student</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
                     </form>
                 </div>
             </div>
