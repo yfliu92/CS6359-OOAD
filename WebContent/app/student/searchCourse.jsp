@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="semester">Semester</label>
-                            <input type="text" name="email" class="form-control" id="semester" placeholder="Semester">
+                            <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester">
                         </div>
                     </div>
                     <%--<br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">--%>
@@ -64,7 +64,7 @@
                     <%--<br>Course Number: <input type="text" name="cno"/>--%>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="sec_num">Course Number</label>
+                            <label for="sec_num">Section Number</label>
                             <input type="text" name="sno" class="form-control" id="sec_num" placeholder="Section Number">
                         </div>
                         <div class="form-group col-md-6">
