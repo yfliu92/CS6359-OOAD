@@ -309,12 +309,12 @@ function getDay(x) {
     var month;
     var day;
     if (x == 1) {
-        year = document.form1.syear.value;
+        year = document.form1.year.value;
         month = document.form1.smonth.value;
         day = document.form1.sday;
     }
     else {
-        year = document.form1.eyear.value;
+        year = document.form1.year.value;
         month = document.form1.emonth.value;
         day = document.form1.eday;
     }
