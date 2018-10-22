@@ -120,7 +120,7 @@ public class Course {
     }
 
     public String getStime() {
-        return stime.substring(0, 2);
+        return stime;
     }
 
     public void setStime(String stime) {
@@ -128,7 +128,7 @@ public class Course {
     }
 
     public String getEtime() {
-        return etime.substring(0, 2);
+        return etime;
     }
 
     public void setEtime(String etime) {
