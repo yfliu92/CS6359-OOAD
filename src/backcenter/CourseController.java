@@ -52,8 +52,8 @@ public class CourseController extends HttpServlet {
             String cno = request.getParameter("cno");
             String sno = request.getParameter("sno");
             String cname = request.getParameter("cname").replaceAll("[^\\p{ASCII}]", " ");
-            String sday = request.getParameter("syear") + "-" + request.getParameter("smonth") + "-" + request.getParameter("sday");
-            String eday = request.getParameter("eyear") + "-" + request.getParameter("emonth") + "-" + request.getParameter("eday");
+            String sday = request.getParameter("year") + "-" + request.getParameter("smonth") + "-" + request.getParameter("sday");
+            String eday = request.getParameter("year") + "-" + request.getParameter("emonth") + "-" + request.getParameter("eday");
             String[] dvalues = request.getParameterValues("days");
             String days = dvalues[0];
             for (int i = 1; i < dvalues.length; i++) {
