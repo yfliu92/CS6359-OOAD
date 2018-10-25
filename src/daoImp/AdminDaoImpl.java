@@ -127,7 +127,7 @@ public class AdminDaoImpl implements AdminDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "Error occured!";
+		return "Error Occurred!";
 	}
 
 	@Override
@@ -228,7 +228,7 @@ public class AdminDaoImpl implements AdminDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "";
+		return "Error Occurred!";
 	}
 
 	@Override
