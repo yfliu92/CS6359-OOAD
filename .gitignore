@@ -2,5 +2,7 @@
 .idea
 OOAD.iml
 /out
-/build/classes
+/build/classes/
+/build/classes/db
 .metadata/
+build
