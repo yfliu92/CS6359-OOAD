@@ -32,10 +32,16 @@
         <a href="<%=basePath1%>app/student/searchCourse.jsp" class="list-group-item list-group-item-action">Find
         Course</a>
     </div>
+    <div class="list-group">
+        <a href="<%=basePath1%>app/student/attendance.jsp" class="list-group-item list-group-item-action">Attendance</a>
+    </div>
     <%} else {%>
 
     <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action">teacher</a>
+    </div>
+    <div class="list-group">
+        <a href="<%=basePath1%>app/teacher/teacherAttendance.jsp" class="list-group-item list-group-item-action">Attendance</a>
     </div>
     <%} %>
 </div>

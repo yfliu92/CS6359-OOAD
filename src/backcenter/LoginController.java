@@ -44,6 +44,8 @@ public class LoginController extends HttpServlet {
                 request.getRequestDispatcher("welcome.jsp").forward(request, response);
             } else if (session.getAttribute("type").equals(1)) {
                 request.getRequestDispatcher("StudentController").forward(request, response);
+            } else if (session.getAttribute("type").equals(2)) {
+                request.getRequestDispatcher("app/teacher/teacherAttendance.jsp").forward(request, response);
             }
         } else if (submitType.equals("register")) {
             user.setF_name(request.getParameter("name"));
