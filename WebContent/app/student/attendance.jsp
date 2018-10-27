@@ -1,5 +1,5 @@
 <%@ page
-        import="daoImp.AttendanceDaoImpl,dao.AttendanceDao"
+        import="domain.User,domain.Course,java.util.List"
         language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
         
@@ -7,6 +7,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+    List<Course> allAvaCourseList = (List<Course>) request.getAttribute("allAvaCourseList");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,14 +33,40 @@
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
                 <h1>Attend Class</h1>
-                <form name="keyform" action="AttendanceController" method="post">
-                <input type="text" name="ramdonkey" placeholder="ramdonkey">
-                <button type=submit>Get Attendance</button>
-                </form>
-                <%if (request.getAttribute("message") != null) { %>
-                <h2><%=request.getAttribute("message") %>
-                </h2>
-                <%} %>
+                
+                <table class="table">
+                	<thead class="thead-light">
+                     	<tr>
+                            <th>CourseId</th>
+                            <th>Get Attendance</th>
+                        </tr>
+                     </thead>
+                        <tbody>
+                            <%
+                                if (allAvaCourseList != null) {
+                                    for (Course c : allAvaCourseList) {
+                            %>
+                            <tr>
+                                <th><%=c.getCid()%>
+                                </th> 
+                                <th><form name="keyform" action="AttendanceController" method="post">
+					                <input type="text" name="ramdonkey" placeholder="ramdonkey">
+					                <input type="submit" value="Get Attendance"/>
+					                <input type="text" name="op" value="get_attendance" style="display:none">
+					                <input type = "text" name="cid" value="<%=c.getCid()%>" style="display:none"/>​
+					                </form>
+					                <%if (request.getAttribute("message") != null) { %>
+					                <h4><%=request.getAttribute("message") %>
+					                </h4>
+					                <%} %>
+                                </th>                              
+                            </tr>
+                            <%
+                                    }
+                                }
+                            %>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>

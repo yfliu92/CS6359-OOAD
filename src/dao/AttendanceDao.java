@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.List;
+
+import domain.Course;
 import domain.User;
 
 /**
@@ -8,5 +11,7 @@ import domain.User;
 * 
 */
 public interface AttendanceDao {
-	public User attend(String key, String id);
+	public int attend(String key, String id,int cid);
+
+	public List<Course> getAllAvaCourse(String id);
 }

@@ -33,7 +33,7 @@
         Course</a>
     </div>
     <div class="list-group">
-        <a href="<%=basePath1%>app/student/attendance.jsp" class="list-group-item list-group-item-action">Attendance</a>
+        <a href="<%=basePath1%>AttendanceController" class="list-group-item list-group-item-action">Attendance</a>
     </div>
     <%} else {%>
 

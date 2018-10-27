@@ -51,7 +51,7 @@ public class AttendanceTeacherController extends HttpServlet{
 		}
 		else if(op.equals("start")) {
 			String cid = request.getParameter("cid");
-			System.out.println(cid);
+//			System.out.println(cid);
 			int ccid = Integer.parseInt(cid);
     		StringBuilder rk=new StringBuilder();
     	    for(int i=0;i<4;i++){

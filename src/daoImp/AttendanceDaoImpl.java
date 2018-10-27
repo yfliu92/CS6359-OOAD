@@ -3,9 +3,13 @@ package daoImp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.AttendanceDao;
 import db.DbManager;
+import domain.Course;
 import domain.User;
 
 /**
@@ -19,32 +23,57 @@ public class AttendanceDaoImpl implements AttendanceDao {
 	DbManager db = new DbManager();
 	
 	@Override
-	public User attend(String key, String id) {
-		User user = new User();
+	public int attend(String key, String id,int cid) {
+		int rs=0;
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("select * from attendance_key where ramdon_key=? and attend_state=1");
+			ps =conn.prepareStatement("select * from attendance_key where ramdon_key=? and course_id=? and attend_state=1");
 			ps.setString(1, key);
-			ResultSet rs = ps.executeQuery();
-//			if(rs.next()) {
-//				ps =conn.prepareStatement("update attendance set state=1 where stu_id=?");
-//				ps.setString(1, id);
-//				ps.executeUpdate();
-//			}
-			while(rs.next()){
-				user.setId("success");
-//				user.setPassword("12341234");
-//				user.setF_name("12341234345");
-//				user.setUser_type(1);
-				ps =conn.prepareStatement("update attendance set state=1 where stu_id=?");
+			ps.setInt(2, cid);
+			ResultSet r = ps.executeQuery();
+			while(r.next()){
+				ps =conn.prepareStatement("SELECT * FROM attendance WHERE stu_id=? AND course_id =?");
 				ps.setString(1, id);
-				ps.executeUpdate();
+				ps.setInt(2, cid);
+				ResultSet r2 = ps.executeQuery();
+				if(r2.next()) {
+					ps =conn.prepareStatement("update attendance set state=1 where stu_id=? and course_id=?");
+					ps.setString(1, id);
+					ps.setInt(2, cid);
+					rs=ps.executeUpdate();
+				}
+				else {
+					ps =conn.prepareStatement("insert into attendance (stu_id,course_id,day,state)  VALUES (?,?,'2008-01-01',1) ");
+					ps.setString(1, id);
+					ps.setInt(2, cid);
+					rs=ps.executeUpdate();
+				}
 			}
 			conn.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		return user;
+		return rs;
+	}
+
+	@Override
+	public List<Course> getAllAvaCourse(String id) {
+		List<Course> list = new ArrayList<>();
+		try {
+			conn = db.getConnection();
+			ps =conn.prepareStatement("SELECT a.course_id FROM ATTENDANCE_KEY a, STU_COURSES sc WHERE a.course_id=sc.course_id and a.attend_state =1");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Course c = new Course();
+				c.setCid(rs.getInt(1));
+//				System.out.println(c.getCid());
+				list.add(c);
+			}
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }
