@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dao.AttendanceDao;
@@ -26,24 +28,30 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	@Override
 	public int setRK(String id, String rk, int cid) {
 		int rs=0;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(df.format(new Date()));
+		String date = df.format(new Date());
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("SELECT * FROM ATTENDANCE_KEY WHERE teacher_id =? AND course_id =?");
+			ps =conn.prepareStatement("SELECT * FROM ATTENDANCE_KEY WHERE teacher_id =? AND course_id =? and date=?");
 			ps.setString(1, id);
 			ps.setInt(2, cid);
+			ps.setString(3, date);
 			ResultSet r = ps.executeQuery();
 			if(r.next()) {
-				ps =conn.prepareStatement("UPDATE ATTENDANCE_KEY SET ramdon_key =? ,attend_state =1 WHERE teacher_id =? and course_id=?");
+				ps =conn.prepareStatement("UPDATE ATTENDANCE_KEY SET ramdon_key =? ,attend_state =1 WHERE teacher_id =? and course_id=? and date=?");
 				ps.setString(1, rk);
 				ps.setString(2, id);
 				ps.setInt(3, cid);
+				ps.setString(4, date);
 				rs = ps.executeUpdate();
 			}
 			else {
-				ps =conn.prepareStatement("INSERT INTO ATTENDANCE_KEY (teacher_id, course_id, att_section_no, ramdon_key, attend_state) VALUES (?,?,'002',?,'1')");
+				ps =conn.prepareStatement("INSERT INTO ATTENDANCE_KEY (teacher_id, course_id, date, ramdon_key, attend_state) VALUES (?,?,?,?,'1')");
 				ps.setString(1, id);
 				ps.setInt(2, cid);
-				ps.setString(3, rk);
+				ps.setString(3, date);
+				ps.setString(4, rk);
 				rs = ps.executeUpdate();
 			}
 			conn.close();
@@ -55,11 +63,15 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	@Override
 	public int endAttendance(String id, int cid) {
 		int rs=0;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(df.format(new Date()));
+		String date = df.format(new Date());
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("UPDATE ATTENDANCE_KEY SET attend_state =0 WHERE teacher_id =? and course_id=?");
+			ps =conn.prepareStatement("UPDATE ATTENDANCE_KEY SET attend_state =0 WHERE teacher_id =? and course_id=? and date=?");
 			ps.setString(1, id);
 			ps.setInt(2, cid);
+			ps.setString(3, date);
 			rs = ps.executeUpdate();
 			conn.close();
 		}catch(Exception e){
@@ -70,10 +82,16 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	@Override
 	public List<User> showAbsence(int cid) {
 		List<User> list = new ArrayList<>();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(df.format(new Date()));
+		String date = df.format(new Date());
 		try {
 			conn = db.getConnection();
-			ps =conn.prepareStatement("select u.id, u.f_name,u.l_name from Users u, ATTENDANCE a where u.id=a.stu_id and a.state=0 and course_id=?;");
+			ps =conn.prepareStatement("SELECT u.id, u.f_name, u.l_name FROM STU_COURSES sc, USERS u WHERE sc.stu_id=u.id and sc.course_id=? AND u.id NOT IN(SELECT stu_id FROM ATTENDANCE WHERE course_id=? AND day=?)");
+//			SELECT u.id, u.f_name, u.l_name FROM STU_COURSES sc, USERS u WHERE sc.stu_id=u.id and sc.course_id=? AND u.id NOT IN(SELECT stu_id FROM ATTENDANCE WHERE course_id=? AND day=?) 			
 			ps.setInt(1, cid);
+			ps.setInt(2, cid);
+			ps.setString(3, date);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				User u = new User();
