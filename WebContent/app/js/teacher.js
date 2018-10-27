@@ -36,10 +36,10 @@ function TeacherLoad(){
 function GetProfile() {
     //request the teacher's profile
 
-    var id='<%= session.getAttribute("id")%>';
+    // var id='<%= session.getAttribute("id")%>';
     $.ajax({
         url: "teacherController",
-        data: {"op":"profile", "teacherId":id},
+        data: {"op":"profile"},
         success:function (data) {
             //display profile
             var jsonObject=$.parseJSON(data);

@@ -41,8 +41,8 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container">
-                <%--<h1> ${message} !!! </h1>--%>
-                <h2> ${updmsg} </h2>
+                <h1> ${message} !!! </h1>
+                <%--<h2> ${updmsg} </h2>--%>
             </div>
         </div>
     </div>
