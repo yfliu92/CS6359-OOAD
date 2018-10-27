@@ -1,157 +1,157 @@
 var myMap = new Map();
-myMap.set("acct", "ACCT - Accounting")
-myMap.set("acn", "ACN - Applied Cognition and Neuroscience")
-myMap.set("acts", "ACTS - Actuarial Science")
-myMap.set("aero", "AERO - AFROTC")
-myMap.set("ahst", "AHST - Art History")
-myMap.set("aim", "AIM - Accounting and Information Management")
-myMap.set("ams", "AMS - American Studies")
-myMap.set("ap", "AP - Art and Performance")
-myMap.set("arab", "ARAB - Arabic")
-myMap.set("arhm", "ARHM - Arts and Humanities")
-myMap.set("arts", "ARTS - Art")
-myMap.set("atcm", "ATCM - Arts Technology Communication and Media")
-myMap.set("atec", "ATEC - Arts and Technology")
-myMap.set("atem", "ATEM - Arts Tech Emrg Comm")
-myMap.set("aud", "AUD - Audiology")
-myMap.set("ba", "BA - Business Administration")
-myMap.set("bbsu", "BBSU - Bachelor of Behavioral Science Undergrad")
-myMap.set("bcom", "BCOM - Business Communication")
-myMap.set("biol", "BIOL - Biology")
-myMap.set("bis", "BIS - Interdisciplinary Studies")
-myMap.set("blaw", "BLAW - Business Law")
-myMap.set("bmen", "BMEN - Biomedical Engineering")
-myMap.set("bps", "BPS - Business Policy and Strategy")
-myMap.set("buan", "BUAN - Business Analytics")
-myMap.set("ce", "CE - Computer Engineering")
-myMap.set("cgs", "CGS - Cognitive Science")
-myMap.set("chem", "CHEM - Chemistry")
-myMap.set("chin", "CHIN - Chinese")
-myMap.set("cjs", "CJS -Crime and Justice Studies")
-myMap.set("cldp", "CLDP - Child Learning and Development")
-myMap.set("comd", "COMD - Communication Disorders")
-myMap.set("comm", "COMM - Communications")
-myMap.set("coop", "COOP - Cooperative Education")
-myMap.set("crim", "CRIM - Criminology")
-myMap.set("crwt", "CRWT - Creative Writing")
-myMap.set("cs", "CS - Computer Science")
-myMap.set("danc", "DANC - Dance")
-myMap.set("dmth", "DMTH - Developmental Mathematics")
-myMap.set("dram", "DRAM - Drama")
-myMap.set("drdg", "DRDG - Developmental Reading")
-myMap.set("dwtg", "DWTG - Developmental Writing")
-myMap.set("eco", "ECO - Economics")
-myMap.set("econ", "ECON - Economics")
-myMap.set("ecs", "ECS - Engineering and Computer Science")
-myMap.set("ecsc", "ECSC - Engineering and Computer Science")
-myMap.set("ed", "ED - Education")
-myMap.set("ee", "EE - Electrical Engineering ")
-myMap.set("eebm", "EEBM - Biomedical Applications of Electrical Engineering")
-myMap.set("eecs", "EECS - Control Systems")
-myMap.set("eect", "EECT - Circuits and Systems")
-myMap.set("eedg", "EEDG - Digital Systems")
-myMap.set("eegr", "EEGR - Graduate")
-myMap.set("eemf", "EEMF - Solid State Devices and Micro Systems Fabrication")
-myMap.set("eeop", "EEOP - Optical Devices, Materials and Systems")
-myMap.set("eepe", "EEPE - Power Electronics and Energy Systems")
-myMap.set("eerf", "EERF - RF and Microwave Engineering")
-myMap.set("eesc", "EESC - Communications and Signal Processing")
-myMap.set("emac", "EMAC - Emerging Media and Communications")
-myMap.set("emth", "EMTH - Mathematics Education")
-myMap.set("engr", "ENGR - Engineering")
-myMap.set("engy", "ENGY - Energy Management")
-myMap.set("entp", "ENTP - Innovation and Entrepreneurship")
-myMap.set("envr", "ENVR - Environmental Science")
-myMap.set("epcs", "EPCS - Engineering Projects in Community Service")
-myMap.set("epps", "EPPS - Economic,Political and Policy Science")
-myMap.set("ferm", "FERM - Financial Engineering and Risk Management")
-myMap.set("film", "FILM - Film Studies")
-myMap.set("fin", "FIN - Finance")
-myMap.set("fren", "FREN - French")
-myMap.set("geog", "GEOG - Geography")
-myMap.set("geos", "GEOS - Geosciences")
-myMap.set("germ", "GERM - German")
-myMap.set("gisc", "GISC - Geographic Information Sciences")
-myMap.set("govt", "GOVT - Government")
-myMap.set("gst", "GST - Gender Studies")
-myMap.set("hcs", "HCS - Human Development and Communication Science")
-myMap.set("hdcd", "HDCD - Human Development and Early Childhood Disorders")
-myMap.set("hist", "HIST - History")
-myMap.set("hlth", "HLTH - Health")
-myMap.set("hmgt", "HMGT - Healthcare Administration")
-myMap.set("hons", "Honors College")
-myMap.set("huas", "HUAS - Aesthetic Studies")
-myMap.set("hued", "HUED - Humanities Education")
-myMap.set("huhi", "HUHI - History of Ideas")
-myMap.set("huma", "HUMA - Humanities")
-myMap.set("husl", "HUSL - Studies in Literature")
-myMap.set("ims", "IMS - International Management Studies")
-myMap.set("ipec", "IPEC - International Political Economy")
-myMap.set("isae", "ISAE - Arts Tech Emrg Comm")
-myMap.set("isah", "ISAH - Interdisciplinary Arts and Humanities")
-myMap.set("isec", "ISEC - EE and CS")
-myMap.set("isgs", "ISGS - Interdisciplinary General Studies (pre 11f)")
-myMap.set("ishd", "ISHD - Interdisciplinary Human Development")
-myMap.set("isis", "ISIS - Interdisciplinary General Studies (11f+)")
-myMap.set("isns", "ISNS - Interdisciplinary Science and Mathematics")
-myMap.set("isss", "ISSS - Interdisciplinary Social Sciences")
-myMap.set("itss", "ITSS - Info Tech & Systems")
-myMap.set("japn", "JAPN - Japanese")
-myMap.set("lang", "LANG - Language")
-myMap.set("lats", "LATS - Latin American Studies")
-myMap.set("lit", "LIT - Literary Studies")
-myMap.set("mais", "MAIS - Interdisciplinary Studies")
-myMap.set("mas", "MAS - Management and Administrative Sciences")
-myMap.set("math", "MATH - Mathematical Science")
-myMap.set("mech", "MECH - Mechanical Engineering")
-myMap.set("meco", "MECO - Managerial Economics")
-myMap.set("med", "MED - Medical Management")
-myMap.set("mils", "MILS - Military Science")
-myMap.set("mis", "MIS - Management Information Systems")
-myMap.set("mkt", "MKT - Marketing Management")
-myMap.set("msen", "MSEN - Materials Science and Engineering")
-myMap.set("mthe", "MTHE - Math Education")
-myMap.set("musi", "MUSI - Music")
-myMap.set("nano", "NANO - Nanoscience")
-myMap.set("nats", "NATS - Natural Sciences")
-myMap.set("nsc", "NSC - Neuroscience")
-myMap.set("ob", "OB - Organizational Behavior")
-myMap.set("obhr", "OBHR - Organizational Behavior/Human Resources")
-myMap.set("opre", "OPRE - Operations Research")
-myMap.set("pa", "PA - Public Affairs/Administration")
-myMap.set("phil", "PHIL - Philosophy")
-myMap.set("phin", "PHIN - Physical Instruction")
-myMap.set("phys", "PHYS - Physics")
-myMap.set("pltl", "PLTL - Peer-Led Team Learning")
-myMap.set("poec", "POEC - Political Economy")
-myMap.set("ppol", "PPOL - Public Policy")
-myMap.set("pppe", "PPPE - Public Policy & Pol Eco")
-myMap.set("psci", "PSCI - Political Science")
-myMap.set("psy", "PSY - Psychology")
-myMap.set("psyc", "PSYC - Psychological Sciences")
-myMap.set("real", "REAL - Real Estate")
-myMap.set("rhet", "RHET - Rhetoric")
-myMap.set("rmis", "RMIS - Risk Mgmt & Insurance")
-myMap.set("sce", "SCE - Science Education")
-myMap.set("sci", "SCI - Science")
-myMap.set("se", "SE - Software Engineering")
-myMap.set("smed", "SMED - Science Math Education")
-myMap.set("soc", "SOC - Sociology")
-myMap.set("socs", "SOCS - Social Sciences")
-myMap.set("span", "SPAN - Spanish")
-myMap.set("spau", "SPAU - Speech-Language Pathology and Audiology")
-myMap.set("stat", "STAT - Statistics")
-myMap.set("syse", "SYSE - Systems Engineering")
-myMap.set("sysm", "SYSM - Systems Engineering and Management")
-myMap.set("te", "TE - Telecommunication Engineering")
-myMap.set("thea", "THEA - Theater")
-myMap.set("ugrd", "Undergraduate Studies")
-myMap.set("univ", "UNIV - University Course")
-myMap.set("utd", "UTD - UTD Registration")
-myMap.set("utsw", "UTSW - UT SOUTHWESTERN COURSES")
-myMap.set("grek", "GREK - Greek")
-myMap.set("uttc", "UTTC - Telecampus Registration")
-myMap.set("viet", "VIET - Vietnamese")
+myMap.set("acct", "ACCT - Accounting");
+myMap.set("acn", "ACN - Applied Cognition and Neuroscience");
+myMap.set("acts", "ACTS - Actuarial Science");
+myMap.set("aero", "AERO - AFROTC");
+myMap.set("ahst", "AHST - Art History");
+myMap.set("aim", "AIM - Accounting and Information Management");
+myMap.set("ams", "AMS - American Studies");
+myMap.set("ap", "AP - Art and Performance");
+myMap.set("arab", "ARAB - Arabic");
+myMap.set("arhm", "ARHM - Arts and Humanities");
+myMap.set("arts", "ARTS - Art");
+myMap.set("atcm", "ATCM - Arts Technology Communication and Media");
+myMap.set("atec", "ATEC - Arts and Technology");
+myMap.set("atem", "ATEM - Arts Tech Emrg Comm");
+myMap.set("aud", "AUD - Audiology");
+myMap.set("ba", "BA - Business Administration");
+myMap.set("bbsu", "BBSU - Bachelor of Behavioral Science Undergrad");
+myMap.set("bcom", "BCOM - Business Communication");
+myMap.set("biol", "BIOL - Biology");
+myMap.set("bis", "BIS - Interdisciplinary Studies");
+myMap.set("blaw", "BLAW - Business Law");
+myMap.set("bmen", "BMEN - Biomedical Engineering");
+myMap.set("bps", "BPS - Business Policy and Strategy");
+myMap.set("buan", "BUAN - Business Analytics");
+myMap.set("ce", "CE - Computer Engineering");
+myMap.set("cgs", "CGS - Cognitive Science");
+myMap.set("chem", "CHEM - Chemistry");
+myMap.set("chin", "CHIN - Chinese");
+myMap.set("cjs", "CJS -Crime and Justice Studies");
+myMap.set("cldp", "CLDP - Child Learning and Development");
+myMap.set("comd", "COMD - Communication Disorders");
+myMap.set("comm", "COMM - Communications");
+myMap.set("coop", "COOP - Cooperative Education");
+myMap.set("crim", "CRIM - Criminology");
+myMap.set("crwt", "CRWT - Creative Writing");
+myMap.set("cs", "CS - Computer Science");
+myMap.set("danc", "DANC - Dance");
+myMap.set("dmth", "DMTH - Developmental Mathematics");
+myMap.set("dram", "DRAM - Drama");
+myMap.set("drdg", "DRDG - Developmental Reading");
+myMap.set("dwtg", "DWTG - Developmental Writing");
+myMap.set("eco", "ECO - Economics");
+myMap.set("econ", "ECON - Economics");
+myMap.set("ecs", "ECS - Engineering and Computer Science");
+myMap.set("ecsc", "ECSC - Engineering and Computer Science");
+myMap.set("ed", "ED - Education");
+myMap.set("ee", "EE - Electrical Engineering ");
+myMap.set("eebm", "EEBM - Biomedical Applications of Electrical Engineering");
+myMap.set("eecs", "EECS - Control Systems");
+myMap.set("eect", "EECT - Circuits and Systems");
+myMap.set("eedg", "EEDG - Digital Systems");
+myMap.set("eegr", "EEGR - Graduate");
+myMap.set("eemf", "EEMF - Solid State Devices and Micro Systems Fabrication");
+myMap.set("eeop", "EEOP - Optical Devices, Materials and Systems");
+myMap.set("eepe", "EEPE - Power Electronics and Energy Systems");
+myMap.set("eerf", "EERF - RF and Microwave Engineering");
+myMap.set("eesc", "EESC - Communications and Signal Processing");
+myMap.set("emac", "EMAC - Emerging Media and Communications");
+myMap.set("emth", "EMTH - Mathematics Education");
+myMap.set("engr", "ENGR - Engineering");
+myMap.set("engy", "ENGY - Energy Management");
+myMap.set("entp", "ENTP - Innovation and Entrepreneurship");
+myMap.set("envr", "ENVR - Environmental Science");
+myMap.set("epcs", "EPCS - Engineering Projects in Community Service");
+myMap.set("epps", "EPPS - Economic,Political and Policy Science");
+myMap.set("ferm", "FERM - Financial Engineering and Risk Management");
+myMap.set("film", "FILM - Film Studies");
+myMap.set("fin", "FIN - Finance");
+myMap.set("fren", "FREN - French");
+myMap.set("geog", "GEOG - Geography");
+myMap.set("geos", "GEOS - Geosciences");
+myMap.set("germ", "GERM - German");
+myMap.set("gisc", "GISC - Geographic Information Sciences");
+myMap.set("govt", "GOVT - Government");
+myMap.set("gst", "GST - Gender Studies");
+myMap.set("hcs", "HCS - Human Development and Communication Science");
+myMap.set("hdcd", "HDCD - Human Development and Early Childhood Disorders");
+myMap.set("hist", "HIST - History");
+myMap.set("hlth", "HLTH - Health");
+myMap.set("hmgt", "HMGT - Healthcare Administration");
+myMap.set("hons", "Honors College");
+myMap.set("huas", "HUAS - Aesthetic Studies");
+myMap.set("hued", "HUED - Humanities Education");
+myMap.set("huhi", "HUHI - History of Ideas");
+myMap.set("huma", "HUMA - Humanities");
+myMap.set("husl", "HUSL - Studies in Literature");
+myMap.set("ims", "IMS - International Management Studies");
+myMap.set("ipec", "IPEC - International Political Economy");
+myMap.set("isae", "ISAE - Arts Tech Emrg Comm");
+myMap.set("isah", "ISAH - Interdisciplinary Arts and Humanities");
+myMap.set("isec", "ISEC - EE and CS");
+myMap.set("isgs", "ISGS - Interdisciplinary General Studies (pre 11f)");
+myMap.set("ishd", "ISHD - Interdisciplinary Human Development");
+myMap.set("isis", "ISIS - Interdisciplinary General Studies (11f+)");
+myMap.set("isns", "ISNS - Interdisciplinary Science and Mathematics");
+myMap.set("isss", "ISSS - Interdisciplinary Social Sciences");
+myMap.set("itss", "ITSS - Info Tech & Systems");
+myMap.set("japn", "JAPN - Japanese");
+myMap.set("lang", "LANG - Language");
+myMap.set("lats", "LATS - Latin American Studies");
+myMap.set("lit", "LIT - Literary Studies");
+myMap.set("mais", "MAIS - Interdisciplinary Studies");
+myMap.set("mas", "MAS - Management and Administrative Sciences");
+myMap.set("math", "MATH - Mathematical Science");
+myMap.set("mech", "MECH - Mechanical Engineering");
+myMap.set("meco", "MECO - Managerial Economics");
+myMap.set("med", "MED - Medical Management");
+myMap.set("mils", "MILS - Military Science");
+myMap.set("mis", "MIS - Management Information Systems");
+myMap.set("mkt", "MKT - Marketing Management");
+myMap.set("msen", "MSEN - Materials Science and Engineering");
+myMap.set("mthe", "MTHE - Math Education");
+myMap.set("musi", "MUSI - Music");
+myMap.set("nano", "NANO - Nanoscience");
+myMap.set("nats", "NATS - Natural Sciences");
+myMap.set("nsc", "NSC - Neuroscience");
+myMap.set("ob", "OB - Organizational Behavior");
+myMap.set("obhr", "OBHR - Organizational Behavior/Human Resources");
+myMap.set("opre", "OPRE - Operations Research");
+myMap.set("pa", "PA - Public Affairs/Administration");
+myMap.set("phil", "PHIL - Philosophy");
+myMap.set("phin", "PHIN - Physical Instruction");
+myMap.set("phys", "PHYS - Physics");
+myMap.set("pltl", "PLTL - Peer-Led Team Learning");
+myMap.set("poec", "POEC - Political Economy");
+myMap.set("ppol", "PPOL - Public Policy");
+myMap.set("pppe", "PPPE - Public Policy & Pol Eco");
+myMap.set("psci", "PSCI - Political Science");
+myMap.set("psy", "PSY - Psychology");
+myMap.set("psyc", "PSYC - Psychological Sciences");
+myMap.set("real", "REAL - Real Estate");
+myMap.set("rhet", "RHET - Rhetoric");
+myMap.set("rmis", "RMIS - Risk Mgmt & Insurance");
+myMap.set("sce", "SCE - Science Education");
+myMap.set("sci", "SCI - Science");
+myMap.set("se", "SE - Software Engineering");
+myMap.set("smed", "SMED - Science Math Education");
+myMap.set("soc", "SOC - Sociology");
+myMap.set("socs", "SOCS - Social Sciences");
+myMap.set("span", "SPAN - Spanish");
+myMap.set("spau", "SPAU - Speech-Language Pathology and Audiology");
+myMap.set("stat", "STAT - Statistics");
+myMap.set("syse", "SYSE - Systems Engineering");
+myMap.set("sysm", "SYSM - Systems Engineering and Management");
+myMap.set("te", "TE - Telecommunication Engineering");
+myMap.set("thea", "THEA - Theater");
+myMap.set("ugrd", "Undergraduate Studies");
+myMap.set("univ", "UNIV - University Course");
+myMap.set("utd", "UTD - UTD Registration");
+myMap.set("utsw", "UTSW - UT SOUTHWESTERN COURSES");
+myMap.set("grek", "GREK - Greek");
+myMap.set("uttc", "UTTC - Telecampus Registration");
+myMap.set("viet", "VIET - Vietnamese");
 
 function getPrefix() {
     var prefix = document.form1.prefix;
@@ -182,18 +182,18 @@ function getValues(pre, sday, eday) {
     em = eday.split("-")[1];
     ed = eday.split("-")[2];
     var mmap = new Map();
-    mmap.set(1, "January")
-    mmap.set(2, "February")
-    mmap.set(3, "March")
-    mmap.set(4, "April")
-    mmap.set(5, "May")
-    mmap.set(6, "June")
-    mmap.set(7, "July")
-    mmap.set(8, "August")
-    mmap.set(9, "September")
-    mmap.set(10, "October")
-    mmap.set(11, "November")
-    mmap.set(12, "December")
+    mmap.set(1, "January");
+    mmap.set(2, "February");
+    mmap.set(3, "March");
+    mmap.set(4, "April");
+    mmap.set(5, "May");
+    mmap.set(6, "June");
+    mmap.set(7, "July");
+    mmap.set(8, "August");
+    mmap.set(9, "September");
+    mmap.set(10, "October");
+    mmap.set(11, "November");
+    mmap.set(12, "December");
     var smonth = document.form1.smonth;
     var emonth = document.form1.emonth;
     var j = 0;

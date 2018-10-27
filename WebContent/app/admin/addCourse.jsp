@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container shadow-lg rounded">
                 <h5>Add Course</h5>
                 <form name="form1" action="CourseController" method=post>
                     <div class="form-row">
@@ -40,7 +40,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="semester">Semester</label>
-                            <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester">
+                            <input type="text" name="semester" class="form-control" id="semester"
+                                   placeholder="Semester">
                         </div>
                     </div>
                     <%--<br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">--%>
@@ -145,7 +146,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="capacity">Capacity</label>
-                            <input type="text" name="capacity" class="form-control" id="capacity" placeholder="Capacity">
+                            <input type="text" name="capacity" class="form-control" id="capacity"
+                                   placeholder="Capacity">
                         </div>
                     </div>
                     <div class="form-row">
@@ -155,8 +157,7 @@
                                 <% AdminDao adao = new AdminDaoImpl();
                                     List<User> list = adao.getAllTeachers();
                                     for (User u : list) {%>
-                                <option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>
-                                </option>
+                                <option value= <%=u.getId() %>><%= u.getF_name() + " " + u.getL_name() %></option>
                                 <%} %>
                             </select>
                         </div>
@@ -176,6 +177,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
+<script src="<%= basePath %>app/js/admin.addCourse.js"></script>
 
 </body>
 </html>

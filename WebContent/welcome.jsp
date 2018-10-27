@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container  shadow-lg rounded">
                 <%--<h1> ${message} !!! </h1>--%>
                 <h2> ${updmsg} </h2>
                 <%if (list != null) { %>

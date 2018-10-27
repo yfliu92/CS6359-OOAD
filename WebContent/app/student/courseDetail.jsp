@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container shadow-lg rounded">
                 <h1>Course Detail</h1>
                 <form name="form1" action="StudentController" method=post>
                     <br>Term: <%=course.getYear() %>-<%=course.getSemester() %>
