@@ -34,7 +34,7 @@
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
                     <h2>Add Course</h2>
                 </div>
-                <form name="form1" action="CourseController" method=post>
+                <form id="admin-add-course-form" name="form1" action="CourseController" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="year">Year</label>
@@ -73,19 +73,19 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Start Date</label>
-                            <select class="custom-select" name="smonth" onclick="getMonth(1)" onchange="getDay(1)">
+                            <select id="smonth" class="custom-select" name="smonth" onclick="getMonth(1)" onchange="getDay(1)">
                                 <option value=0>Month</option>
                             </select>
-                            <select class="custom-select" name="sday">
+                            <select id="sday" class="custom-select" name="sday">
                                 <option value=0>Day</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>End Date</label>
-                            <select class="custom-select" name="emonth" onclick="getMonth(0)" onchange="getDay(0)">
+                            <select id="emonth" class="custom-select" name="emonth" onclick="getMonth(0)" onchange="getDay(0)">
                                 <option value=0>Month</option>
                             </select>
-                            <select class="custom-select" name="eday">
+                            <select id="eday" class="custom-select" name="eday">
                                 <option value=0>Day</option>
                             </select>
                         </div>
@@ -93,7 +93,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <div class="checkbox">
-                                <label><input type="checkbox" value="M" name="days">Monday</label>
+                                <label><input type="checkbox" value="M" name="days" checked>Monday</label>
                             </div>
                         </div>
                         <div class="form-group col-md-2">
@@ -124,18 +124,18 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="s_time">Time</label>
-                            <input type="text" name="stime">
+                            <label for="stime">Start Time</label>
+                            <input id="stime" type="text" name="stime">
                             <select id="s_time" name="ap1">
-                                <option value="am">AM</option>
+                                <option value="am" selected>AM</option>
                                 <option value="pm">PM</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="e_time">To</label>
-                            <input type="text" name="etime">
+                            <label for="etime">End Time</label>
+                            <input id="etime" type="text" name="etime">
                             <select id="e_time" name="ap2">
-                                <option value="am">AM</option>
+                                <option value="am" selected>AM</option>
                                 <option value="pm">PM</option>
                             </select>
                             <span>&nbsp;(format as 08:30)</span>
@@ -168,7 +168,7 @@
 
                     <div class="row pt-1 pb-3">
                         <div class="col-md-12 d-flex flex-row justify-content-end">
-                            <button type="submit" value="Add Course" class="btn btn-success">Add Course</button>
+                            <button type="submit" value="Add Course" class="btn btn-success admin-add-course-btn">Add Course</button>
                         </div>
                     </div>
                     <input type="text" name="op" value="add" style="display:none">
