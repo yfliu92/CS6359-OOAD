@@ -31,7 +31,9 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container shadow-lg rounded">
-                <h5>Add Course</h5>
+                <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
+                    <h2>Add Course</h2>
+                </div>
                 <form name="form1" action="CourseController" method=post>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -157,7 +159,8 @@
                                 <% AdminDao adao = new AdminDaoImpl();
                                     List<User> list = adao.getAllTeachers();
                                     for (User u : list) {%>
-                                <option value= <%=u.getId() %>><%= u.getF_name() + " " + u.getL_name() %></option>
+                                <option value= <%=u.getId() %>><%= u.getF_name() + " " + u.getL_name() %>
+                                </option>
                                 <%} %>
                             </select>
                         </div>

@@ -33,7 +33,9 @@
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
 
             <div class="col-md-10 page-content-container shadow-lg rounded">
-                <h1>Search Course</h1>
+                <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
+                    <h2>Search Course</h2>
+                </div>
                 <form name="form1" action="StudentController" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">

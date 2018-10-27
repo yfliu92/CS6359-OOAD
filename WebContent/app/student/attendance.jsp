@@ -32,8 +32,9 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container shadow-lg rounded">
-                <h1>Attend Class</h1>
-                
+                <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
+                    <h2>Attendance</h2>
+                </div>
                 <table class="table">
                 	<thead class="thead-light">
                      	<tr>

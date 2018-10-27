@@ -34,10 +34,11 @@
         <div class="row">
             <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container  shadow-lg rounded">
-                <%--<h1> ${message} !!! </h1>--%>
                 <h2> ${updmsg} </h2>
                 <%if (list != null) { %>
-                <h2>Current Courses</h2>
+                <div class="page-content-title border-bottom pt-2 pb-2 mb-3">
+                    <h2>Current Courses</h2>
+                </div>
                 <form name="cform" id="cform" action="StudentController" method="post">
                     <table class="table table-hover table-sm">
                         <thead class="thead-light">
@@ -69,10 +70,10 @@
                             </th>
                             <th>
                                 <button type="button" data-course-id="<%=c.getCid()%>"
-                                        class="btn btn-primary detail-btn" value="Detail">Detail
+                                        class="btn btn-info btn-sm detail-btn" value="Detail">Detail
                                 </button>
                                 <button type="button" data-course-id="<%=c.getCid()%>"
-                                        class="btn btn-danger drop-btn">
+                                        class="btn btn-danger btn-sm drop-btn">
                                     Drop
                                 </button>
                             </th>
@@ -80,10 +81,10 @@
                         <%} %>
                         <input id="select-id-input" type="text" name="selectid" value="" style="display:none;">
                         <input id="op-input" type="text" name="op" value="" style="display:none;">
-                        <%} %>
                         </tbody>
                     </table>
                 </form>
+                <%} %>
             </div>
         </div>
     </div>
