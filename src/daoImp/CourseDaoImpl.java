@@ -115,4 +115,30 @@ public class CourseDaoImpl implements CourseDao {
 		}
 		return res;
 	}
+	//get course name,id from teacher_id
+	@Override
+	public List<Course> getCourseList(String teacher_id) {
+		List<Course> result=new ArrayList<>();
+		Connection conn;
+		PreparedStatement ps;
+		DbManager db = new DbManager();
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("select * from courses where teacher_id=?");
+			ps.setString(1, teacher_id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Course course=new Course();
+				course.setCid(rs.getInt(1));
+				course.setCname(rs.getString(2));
+				result.add(course);
+			}
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return result;
+	}
+
+
 }

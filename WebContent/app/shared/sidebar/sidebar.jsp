@@ -39,13 +39,18 @@
         <a href="<%=basePath1%>AttendanceController" class="list-group-item list-group-item-action student-attendance">Attendance</a>
     </div>
     <%} else {%>
-
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">Home</a>
+        <a href="<%=basePath1%>app/teacher/teacher.jsp" class="list-group-item list-group-item-action sidebar-home">Home</a>
     </div>
     <div class="list-group">
         <a href="<%=basePath1%>AttendanceTeacherController"
            class="list-group-item list-group-item-action teacher-attendance">Attendance</a>
+    </div>
+    <div class="list-group">
+        <p class="list-group-item list-group-item-action sidebar-profile">Profile</p>
+    </div>
+    <div class="list-group sidebar-course">
+        <h6 class="list-group-item list-group-item-action">Course</h6>
     </div>
     <%} %>
 </div>

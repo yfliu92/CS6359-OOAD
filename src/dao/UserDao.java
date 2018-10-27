@@ -15,4 +15,5 @@ public interface UserDao {
 	 * Retrieve the Customer object from the database
 	 */
 	public User validateUser(Login login);
+	public User getProfile(String id);
 }
