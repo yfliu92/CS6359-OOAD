@@ -11,9 +11,11 @@ import domain.User;
 * 
 */
 public interface AttendanceTeacherDao {
-	public int setRK(String id, String rk);
+	public int setRK(String id, String rk,int cid);
 
-	public int endAttendance(String id);
+	public int endAttendance(String id, int cid);
 
-	public List<User> showAbsence();
+	public List<User> showAbsence(int cid);
+
+	public List<Course> getAllCourse(String id);
 }

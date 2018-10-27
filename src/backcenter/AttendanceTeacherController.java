@@ -39,31 +39,45 @@ public class AttendanceTeacherController extends HttpServlet{
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String op = request.getParameter("op");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		String op = request.getParameter("op");
 	    HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		AttendanceTeacherDao ATDao = new AttendanceTeacherDaoImpl();
-//        System.out.println(op);
-        if(op.equals("start")) {
+		List<Course> allCourseList = ATDao.getAllCourse(id);
+		request.setAttribute("allCourseList", allCourseList);
+		if(op==null) {
+	        request.getRequestDispatcher("app/teacher/teacherAttendance.jsp").forward(request, response); 
+		}
+		else if(op.equals("start")) {
+			String cid = request.getParameter("cid");
+			System.out.println(cid);
+			int ccid = Integer.parseInt(cid);
     		StringBuilder rk=new StringBuilder();
     	    for(int i=0;i<4;i++){
     	    	rk.append((int)(Math.random()*9)); 
     	       }
     	    System.out.println(rk);
-    		ATDao.setRK(id,rk.toString());
+    		ATDao.setRK(id,rk.toString(),ccid);
     	    request.setAttribute("ramdonKey", rk.toString());
-            request.getRequestDispatcher("app/student/teacherAttendance.jsp").forward(request, response);
+    	    request.setAttribute("cid", cid);
+            request.getRequestDispatcher("app/teacher/teacherAttendance.jsp").forward(request, response);
         }
         else if(op.equals("end")) {
-        	int i = ATDao.endAttendance(id);
-        	System.out.println(i);
-            request.getRequestDispatcher("app/student/teacherAttendance.jsp").forward(request, response);
+			String cid = request.getParameter("cid");
+			int ccid = Integer.parseInt(cid);
+        	int i = ATDao.endAttendance(id,ccid);
+//        	System.out.println(i);
+    	    request.setAttribute("cid", cid);
+            request.getRequestDispatcher("app/teacher/teacherAttendance.jsp").forward(request, response);
         }
         else if(op.equals("show")) {
-        	List<User> list = ATDao.showAbsence();
+        	String cid = request.getParameter("cid");
+        	int ccid = Integer.parseInt(cid);
+        	List<User> list = ATDao.showAbsence(ccid);
         	request.setAttribute("list", list);
-            request.getRequestDispatcher("app/student/teacherAttendance.jsp").forward(request, response);
+    	    request.setAttribute("cid", cid);
+            request.getRequestDispatcher("app/teacher/teacherAttendance.jsp").forward(request, response);
         }
 
 	}

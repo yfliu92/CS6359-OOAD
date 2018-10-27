@@ -1,5 +1,5 @@
 <%@ page
-        import="domain.User,java.util.List"
+        import="domain.User,domain.Course,java.util.List"
         language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
         
@@ -7,8 +7,10 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
-    List<User> list = (List<User>) request.getAttribute("list");
-    String ramdonKey = (String)request.getAttribute("ramdonKey");
+    String cid = (String)request.getAttribute("cid");
+    List<User> AbsenceList = (List<User>) request.getAttribute("list");     
+    List<Course> allCourseList = (List<Course>) request.getAttribute("allCourseList");
+     String ramdonKey = (String)request.getAttribute("ramdonKey");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,48 +34,86 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
-            <form action="AttendanceTeacherController" method="post">
-            <input type="submit" value="Get Attendance Key"/>
-            <input type="text" name="op" value="start" style="display:none">
-            </form>
-            <%if (ramdonKey != null) { %>
-            <p><%=ramdonKey%></p>
-            <%} %>
-            
-            <br/>
-            <form action="AttendanceTeacherController" method="post">
-            <input type="submit" value="End Attendance"/>
-            <input type="text" name="op" value="end" style="display:none">
-            </form>
-            <br/>
-            
-            <form action="AttendanceTeacherController" method="post">
-            <input type="submit" value="Show Absence"/>
-            <input type="text" name="op" value="show" style="display:none">
-            </form>
-            <%if (list != null) { %>
-            <h2>Absence List</h2>
-            <table>
-                        <tr>
-                        	<th>Stu_id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+             <div class="col-md-10 page-content-container">
+             	<table class="table">
+                	<thead class="thead-light">
+                     	<tr>
+                            <th>Name</th>
+                            <th>Course#</th>
+                            <th>Section#</th>
+                            <th>Get Attendance Key</th>
+                            <th>End Attendance</th>
+                            <th>Show Absence</th>
                         </tr>
+                     </thead>
+                        <tbody>
                             <%
-			for(User u:list){%>
-                        <tr>
-                            <input style="display:none" name="id" value=<%=u.getId() %>>
-                            <th><%=u.getId()%>
-                            </th>
-                            <th><%=u.getF_name() %>
-                            </th>
-                            <th><%=u.getL_name()%>
-                            </th>
-                        </tr>
-                            <%} %>
-            </table>
-            <%} %>
+                                if (allCourseList != null) {
+                                    for (Course c : allCourseList) {
+                            %>
+                            <tr>
+                                <th><%=c.getCname()%>
+                                </th>
+                                <th><%=c.getCno()%>
+                                </th>
+                                <th><%=c.getSno()%>
+                                </th>
+                                <th><form action="AttendanceTeacherController" method="post">
+						            <input type="submit" value="Get Attendance Key"/>
+						            <input type = "text" name="cid" value="<%=c.getCid()%>" style="display:none"/>​
+						            <input type="text" name="op" value="start" style="display:none">
+						            </form>
+						            <%if (ramdonKey != null&&cid!=null) {
+						            	int ccid = Integer.parseInt(cid);
+						            	if(ccid==c.getCid()){%>
+							            <p><%=ramdonKey%></p>
+
+						            	<%} %>
+						            <%} %>
+                                </th>
+                                <th><form action="AttendanceTeacherController" method="post">
+						            <input type="submit" value="End Attendance"/>
+						            <input type = "text" name="cid" value="<%=c.getCid()%>" style="display:none"/>​
+						            <input type="text" name="op" value="end" style="display:none">
+						            </form>
+					            </th>
+					            <th><form action="AttendanceTeacherController" method="post">
+						            <input type="submit" value="Show Absence"/>
+						            <input type = "text" name="cid" value="<%=c.getCid()%>" style="display:none"/>​
+						            <input type="text" name="op" value="show" style="display:none">
+						            </form>		            
+						            <%if ((AbsenceList!=null&&AbsenceList.size()!=0)&&cid!=null) { 
+						            	int ccid = Integer.parseInt(cid);
+						            	if(ccid==c.getCid()){%>
+						            	<h4>Absence List</h4>
+						            	<table>
+						                        <tr>
+						                        	<th>Stu_id</th>
+						                            <th>First Name</th>
+						                            <th>Last Name</th>
+						                        </tr>
+						                            <%
+										for(User u:AbsenceList){%>
+						                        <tr>
+						                            <th><%=u.getId()%>
+						                            </th>
+						                            <th><%=u.getF_name() %>
+						                            </th>
+						                            <th><%=u.getL_name()%>
+						                            </th>
+						                        </tr>
+						                            <%} %>
+						            	</table>
+						            	<%} %>
+						            <%} %>
+					            </th>
+                            </tr>
+                            <%
+                                    }
+                                }
+                            %>
+                        </tbody>
+                    </table>
             
             </div>
         </div>

@@ -41,7 +41,7 @@
         <a href="#" class="list-group-item list-group-item-action">teacher</a>
     </div>
     <div class="list-group">
-        <a href="<%=basePath1%>app/teacher/teacherAttendance.jsp" class="list-group-item list-group-item-action">Attendance</a>
+        <a href="<%=basePath1%>AttendanceTeacherController" class="list-group-item list-group-item-action">Attendance</a>
     </div>
     <%} %>
 </div>
