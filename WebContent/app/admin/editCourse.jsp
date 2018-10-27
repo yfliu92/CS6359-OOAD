@@ -66,7 +66,7 @@
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
                     <h2>Edit Course</h2>
                 </div>
-                <form name="form1" action="CourseController" method=post>
+                <form name="form1" action="CourseController" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="year">Year</label>
@@ -195,7 +195,11 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success" value="Save">Save</button>
+                    <div class="row pt-1 pb-3">
+                        <div class="col-md-3 d-flex">
+                            <button type="submit" class="btn btn-success" value="Save">Save</button>
+                        </div>
+                    </div>
                     <input type="text" name="cid" value=<%=course.getCid()%> style="display:none">
                     <input type="text" name="op" value="add" style="display:none">
                     <input type="text" name="edit" value="yes" style="display:none">
@@ -213,6 +217,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
+<script src="<%= basePath %>app/js/admin.editCourse.js"></script>
 
 </body>
 </html>

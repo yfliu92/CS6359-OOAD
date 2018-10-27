@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div id="add-user-form-area" class="addForm" style="display:none">
-                    <form name="addform" method=post action="AddUserController">
+                    <form id="admin-add-user-form" name="addform" method="post" action="AddUserController">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputUserName">User Name</label>
@@ -128,7 +128,7 @@
                                 <label for="user_type">User Type</label>
                                 <select id="user_type" name="userType" class="custom-select">
                                     <option value=0>Admin</option>
-                                    <option value=2>Teacher</option>
+                                    <option value=2 selected>Teacher</option>
                                     <option value=1>Student</option>
                                 </select>
                             </div>
@@ -141,7 +141,7 @@
                         <%--<button class="btn btn-primary" type="submit" value="Submit">Submit</button>--%>
                         <div class="row pt-1 pb-3">
                             <div class="col-md-12 d-flex flex-row justify-content-end">
-                                <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+                                <button id="admin-add-user-form-btn" class="btn btn-primary" type="submit" value="Submit">Submit</button>
                             </div>
                         </div>
                     </form>
