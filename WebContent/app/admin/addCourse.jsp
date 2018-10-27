@@ -165,7 +165,12 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" value="Add Course" class="btn btn-success">Add Course</button>
+
+                    <div class="row pt-1 pb-3">
+                        <div class="col-md-12 d-flex flex-row justify-content-end">
+                            <button type="submit" value="Add Course" class="btn btn-success">Add Course</button>
+                        </div>
+                    </div>
                     <input type="text" name="op" value="add" style="display:none">
                 </form>
             </div>

@@ -38,7 +38,7 @@
                 <h2>${ message }</h2>
                 <%} %>
                 <form action="">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-sm">
                         <tbody>
                         <tr>
                             <th>User ID</th>
@@ -74,7 +74,11 @@
                         </tbody>
                     </table>
                 </form>
-                <button class="btn btn-primary add-user-btn" type="button" value="Add User">Add User</button>
+                <div class="row pt-1 pb-3">
+                    <div class="col-md-3 d-flex">
+                        <button class="btn btn-success add-user-btn" type="button" value="Add User">Add User</button>
+                    </div>
+                </div>
                 <div id="add-user-form-area" class="addForm" style="display:none">
                     <form name="addform" method=post action="AddUserController">
                         <div class="form-row">
@@ -134,7 +138,12 @@
                                        placeholder="Email">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+                        <%--<button class="btn btn-primary" type="submit" value="Submit">Submit</button>--%>
+                        <div class="row pt-1 pb-3">
+                            <div class="col-md-12 d-flex flex-row justify-content-end">
+                                <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
