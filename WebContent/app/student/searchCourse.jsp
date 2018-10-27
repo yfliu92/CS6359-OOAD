@@ -32,7 +32,7 @@
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
 
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container shadow-lg rounded">
                 <h1>Search Course</h1>
                 <form name="form1" action="StudentController" method="post">
                     <div class="form-row">
@@ -185,7 +185,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
-<script src="<%= basePath %>app/js/student.js"></script>
-
+<script src="<%= basePath %>app/js/student.js?1"></script>
+<script src="<%= basePath %>app/js/student.findCourse.js"></script>
 </body>
 </html>

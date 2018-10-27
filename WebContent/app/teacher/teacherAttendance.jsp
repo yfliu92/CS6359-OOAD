@@ -2,7 +2,7 @@
         import="domain.User,domain.Course,java.util.List"
         language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
-        
+
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-             <div class="col-md-10 page-content-container">
+             <div class="col-md-10 page-content-container shadow-lg rounded">
              	<table class="table">
                 	<thead class="thead-light">
                      	<tr>
@@ -114,7 +114,6 @@
                             %>
                         </tbody>
                     </table>
-            
             </div>
         </div>
     </div>
@@ -126,7 +125,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-<%-- <script src="<%= basePath %>app/js/course.js"></script> --%>
+ <script src="<%= basePath %>app/js/teacher.attendance.js"></script>
 
 </body>
 </html>

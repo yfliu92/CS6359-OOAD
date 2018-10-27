@@ -62,7 +62,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container  shadow-lg rounded">
                 <h5>Edit Course</h5>
                 <form name="form1" action="CourseController" method=post>
                     <div class="form-row">
@@ -203,7 +203,6 @@
         </div>
     </div>
 </main>
-<script src="<%= basePath %>app/js/course.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -211,5 +210,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script src="<%= basePath %>app/js/course.js"></script>
+
 </body>
 </html>

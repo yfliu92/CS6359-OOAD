@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
-            <div class="col-md-10 page-content-container">
+            <div class="col-md-10 page-content-container shadow-lg rounded">
                 <h1>Attend Class</h1>
                 
                 <table class="table">
@@ -78,7 +78,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-<%-- <script src="<%= basePath %>app/js/course.js"></script> --%>
+ <script src="<%= basePath %>app/js/student.attendance.js"></script>
 
 </body>
 </html>

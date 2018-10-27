@@ -23,7 +23,10 @@
 	- public (public resources)
 		- assets
 		- css
-		- js
+		- js 
+		
+************
+JavaScript Filename convention: [module].[filename].js `e.g., admin.addCourse.js ` 
 
 *************
 - First step, run `git checkout -b [local_branch]` to create and checkout a new local branch
