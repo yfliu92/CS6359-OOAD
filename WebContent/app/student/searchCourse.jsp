@@ -7,7 +7,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
-    List<Course> clist = (List<Course>)request.getAttribute("clist");
+    List<Course> clist = (List<Course>) request.getAttribute("clist");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,17 +31,20 @@
     <div class="container">
         <div class="row">
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
+
             <div class="col-md-10 page-content-container">
                 <h1>Search Course</h1>
-                <form name="form1" action="StudentController" method=post>
+                <form name="form1" action="StudentController" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="year">Year</label>
-                            <input type="text" name="year" onchange="changeyear()" class="form-control" id="year" placeholder="Year">
+                            <input type="text" name="year" onchange="changeyear()" class="form-control" id="year"
+                                   placeholder="Year">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="semester">Semester</label>
-                            <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester">
+                            <input type="text" name="semester" class="form-control" id="semester"
+                                   placeholder="Semester">
                         </div>
                     </div>
                     <%--<br>Year: <input type="text" name="year" onchange="changeyear()" style="width:50px">--%>
@@ -55,21 +58,24 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="course_num">Course Number</label>
-                            <input type="text" name="cno" class="form-control" id="course_num" placeholder="Course Number">
+                            <input type="text" name="cno" class="form-control" id="course_num"
+                                   placeholder="Course Number">
                         </div>
                     </div>
                     <%--<br>Course Prefix: <select name="prefix" onclick="getPrefix()">--%>
                     <%--<option value=0>Select Course Prefix</option>--%>
-                <%--</select>--%>
+                    <%--</select>--%>
                     <%--<br>Course Number: <input type="text" name="cno"/>--%>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sec_num">Section Number</label>
-                            <input type="text" name="sno" class="form-control" id="sec_num" placeholder="Section Number">
+                            <input type="text" name="sno" class="form-control" id="sec_num"
+                                   placeholder="Section Number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="course_name">Course Name</label>
-                            <input type="text" name="cname" class="form-control" id="course_name" placeholder="Course Name">
+                            <input type="text" name="cname" class="form-control" id="course_name"
+                                   placeholder="Course Name">
                         </div>
                     </div>
                     <%--<br>Section Number: <input type="text" name="sno"/>--%>
@@ -91,30 +97,33 @@
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
-                            <button type="submit" name="submit" value="Search Course" class="btn btn-primary">Search Course</button>
+                            <button type="submit" name="submit" value="Search Course" class="btn btn-primary">Search
+                                Course
+                            </button>
                         </div>
                     </div>
                     <%--<br>Instructor: <select name="teacher">--%>
                     <%--<option value=-1>Any Instructor</option>--%>
                     <%--<% --%>
-        			<%--AdminDao adao = new AdminDaoImpl();--%>
+                    <%--AdminDao adao = new AdminDaoImpl();--%>
                     <%--List<User> ulist = adao.getAllTeachers();--%>
                     <%--for (User u : ulist) {%>--%>
                     <%--<option value= <%=u.getId() %>><%=u.getF_name() + " " + u.getL_name() %>--%>
                     <%--</option>--%>
                     <%--<%} %>--%>
-                <%--</select>--%>
+                    <%--</select>--%>
                     <%--<br><input type="submit" value="Search Course"/>--%>
                     <input type="text" name="op" value="search" style="display:none">
                 </form>
 
-                <%if(clist!=null){
-                	if(clist.size()==0){%>
+                <%
+                    if (clist != null) {
+                        if (clist.size() == 0) {
+                %>
                 <th>No course found!</th>
-                <%}
-                else{ %>
-                <form name="cform" id="cform" action="StudentController" method=post>
-                	<table>
+                <%} else { %>
+                <form name="cform" id="cform" action="StudentController" method="post">
+                    <table>
                         <thead class="thead-light">
                         <tr>
                             <th>Term</th>
@@ -127,7 +136,7 @@
                         </tr>
                         </thead>
                         <%
-                                for (Course c : clist) {
+                            for (Course c : clist) {
                         %>
                         <tr>
                             <input style="display:none" name="id" value=<%=c.getCid() %>>
@@ -139,29 +148,35 @@
                             </th>
                             <th><%=c.getTeacher_name()%>
                             </th>
-                            <th><%=c.getStime().substring(0,5) + "-" + c.getEtime().substring(0,5)%>
+                            <th><%=c.getStime().substring(0, 5) + "-" + c.getEtime().substring(0, 5)%>
                             </th>
                             <th><%=c.getRoom()%>
                             </th>
-                            <th><button type="submit" class="btn btn-primary" value="Detail" name="sbut" onclick="show(this)">Detail</button>
-                                <button type="button" class="btn btn-success" value="Register" name="rbut" onclick="reg(this)">Register</button>
+                            <th>
+                                <button type="button" class="btn btn-primary detail-btn" value="Detail"
+                                        data-course-id="<%=c.getCid()%>">Detail
+                                </button>
+                                <button type="button" class="btn btn-success reg-btn" value="Register"
+                                        data-course-id="<%=c.getCid()%>">Register
+                                </button>
                             </th>
                         </tr>
                         <%
-                                }
+                            }
                         %>
-                        <input type="text" name="selectid" value="" style="display:none">
-                        <input type="text" name="op" value="" style="display:none">
+                        <input id="select-id-input" type="text" name="selectid" value="" style="display:none">
+                        <input id="op-input" type="text" name="op" value="" style="display:none">
                     </table>
-                
+
                 </form>
-                <%} 
-                }%>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
     </div>
 </main>
-<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -170,6 +185,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
+<script src="<%= basePath %>app/js/student.js"></script>
 
 </body>
 </html>

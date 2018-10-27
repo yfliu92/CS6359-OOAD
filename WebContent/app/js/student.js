@@ -1,46 +1,67 @@
-function reg(button) {
-    var index = -1;
-    for (var i = 0; i < cform.rbut.length; i++) {
-        if (cform.rbut[i] == button) {
-            index = i;
-            break;
-        }
-    }
-    var id = cform.id[index].value;
-    document.cform.selectid.value = id;
-    document.cform.op.value = "register";
-    if(confirm("Click OK to Continue or Click Cancel to return")){
-    	document.getElementById("cform").submit();
-    }
-}
+(function ($, window, document) {
 
-function show(button) {
-    var index = -1;
-    for (var i = 0; i < cform.sbut.length; i++) {
-        if (cform.sbut[i] == button) {
-            index = i;
-            break;
-        }
-    }
-    var id = cform.id[index].value;
-    document.cform.selectid.value = id;
-    document.cform.op.value = "show";
-    //alert(document.cform.op.value);
-}
+    var cform = "#cform";
+    var detail_btn = ".detail-btn";
+    var drop_btn = ".drop-btn";
+    var reg_btn = ".reg-btn";
+    var selectid_input = "#select-id-input";
+    var op_input = "#op-input";
 
-function drop(button) {
-    var index = -1;
-    for (var i = 0; i < cform.dbut.length; i++) {
-        if (cform.dbut[i] == button) {
-            index = i;
-            break;
+
+    var $CFORM = $(cform);
+    var $DETAIL_BTN = $(detail_btn);
+    var $SELECT_INPUT = $(selectid_input);
+    var $OP_INPUT = $(op_input);
+    var $DROP_BTN = $(drop_btn);
+    var $REG_BTN = $(reg_btn);
+
+    // display course details operation
+    $CFORM.on('click', detail_btn, function (e) {
+        e.preventDefault();
+
+        var $TARGET = $(e.target);
+
+        var id = $TARGET.attr("data-course-id");
+        if (id !== "") {
+            $SELECT_INPUT.attr("value", id);
+            $OP_INPUT.attr("value", "show");
+            $CFORM.submit();
         }
-    }
-    var id = cform.id[index].value;
-    document.cform.selectid.value = id;
-    document.cform.op.value = "drop";
-    if(confirm("Click OK to Continue or Click Cancel to return")){
-    	document.getElementById("cform").submit();
-    }
-    //alert(document.cform.op.value);
-}
+    });
+
+    // drop operation
+    $CFORM.on('click', drop_btn, function (e) {
+        e.preventDefault();
+
+        var $TARGET = $(e.target);
+
+        var id = $TARGET.attr("data-course-id");
+        if (id !== "") {
+            $SELECT_INPUT.attr("value", id);
+            $OP_INPUT.attr("value", "drop");
+
+            var isConfirm = confirm("Click OK to Continue or Click Cancel to return");
+
+            if (isConfirm) {
+                $CFORM.submit();
+            } else {
+                return false;
+            }
+
+        }
+    });
+
+    // register course operation
+    $CFORM.on('click', reg_btn, function (e) {
+        e.preventDefault();
+
+        var $TARGET = $(e.target);
+
+        var id = $TARGET.attr("data-course-id");
+        if (id !== "") {
+            $SELECT_INPUT.attr("value", id);
+            $OP_INPUT.attr("value", "register");
+            $CFORM.submit();
+        }
+    });
+})(window.jQuery, window, document);

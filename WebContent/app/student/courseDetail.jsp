@@ -46,7 +46,6 @@
         </div>
     </div>
 </main>
-<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -55,6 +54,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
+<script src="<%= basePath %>app/js/student.js"></script>
 
 </body>
 </html>

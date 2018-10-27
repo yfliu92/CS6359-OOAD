@@ -7,7 +7,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
     List<Course> list = (List<Course>) request.getAttribute("list");
-    String updmsg = (String)request.getAttribute("updmsg");
+    String updmsg = (String) request.getAttribute("updmsg");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,8 +38,8 @@
                 <h2> ${updmsg} </h2>
                 <%if (list != null) { %>
                 <h2>Current Courses</h2>
-                <form name="cform" id="cform" action="StudentController" method=post>
-                    <table class="table">
+                <form name="cform" id="cform" action="StudentController" method="post">
+                    <table class="table table-hover table-sm">
                         <thead class="thead-light">
                         <tr>
                             <th>Term</th>
@@ -52,39 +52,43 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <%
-                                for(Course c:list){%>
-                            <tr>
-                                <input style="display:none" name="id" value=<%=c.getCid() %>>
-                                <th><%=c.getYear() + "-" + c.getSemester()%>
-                                </th>
-                                <th><%=c.getCno() + "." + c.getSno() %>
-                                </th>
-                                <th><%=c.getCname() %>
-                                </th>
-                                <th><%=c.getTeacher_name()%>
-                                </th>
-                                <th><%=c.getStime().substring(0,5) + "-" + c.getEtime().substring(0,5)%>
-                                </th>
-                                <th><%=c.getRoom()%>
-                                </th>
-                                <th><button type="submit" class="btn btn-primary" value="Detail" name="sbut" onclick="show(this)">Detail</button>
-                                    <button type="button" class="btn btn-danger" value="Drop" name="dbut" onclick="drop(this)">Drop</button>
-                                </th>
-                            </tr>
-                            <%} %>
-                            <input type="text" name="selectid" value="" style="display:none">
-                            <input type="text" name="op" value="" style="display:none">
-                            <%} %>
+                        <%
+                            for (Course c : list) {%>
+                        <tr>
+                            <th><%=c.getYear() + "-" + c.getSemester()%>
+                            </th>
+                            <th><%=c.getCno() + "." + c.getSno() %>
+                            </th>
+                            <th><%=c.getCname() %>
+                            </th>
+                            <th><%=c.getTeacher_name()%>
+                            </th>
+                            <th><%=c.getStime().substring(0, 5) + "-" + c.getEtime().substring(0, 5)%>
+                            </th>
+                            <th><%=c.getRoom()%>
+                            </th>
+                            <th>
+                                <button type="button" data-course-id="<%=c.getCid()%>"
+                                        class="btn btn-primary detail-btn" value="Detail">Detail
+                                </button>
+                                <button type="button" data-course-id="<%=c.getCid()%>"
+                                        class="btn btn-danger drop-btn">
+                                    Drop
+                                </button>
+                            </th>
+                        </tr>
+                        <%} %>
+                        <input id="select-id-input" type="text" name="selectid" value="" style="display:none;">
+                        <input id="op-input" type="text" name="op" value="" style="display:none;">
+                        <%} %>
                         </tbody>
-                      </table>
-                 </form>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
 </main>
 
-<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -93,5 +97,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/welcome.js"></script>
+<script src="<%= basePath %>app/js/student.js"></script>
+
 </body>
 </html>
