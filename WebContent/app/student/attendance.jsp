@@ -35,7 +35,7 @@
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
                     <h2>Attendance</h2>
                 </div>
-                <table class="table">
+                <table class="table table-hover table-sm">
                 	<thead class="thead-light">
                      	<tr>
                             <th>CourseId</th>

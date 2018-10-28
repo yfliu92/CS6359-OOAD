@@ -36,7 +36,7 @@
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
                     <h2>Search Course</h2>
                 </div>
-                <form name="form1" action="StudentController" method="post">
+                <form class="mb-3" name="form1" action="StudentController" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="year">Year</label>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
-                            <button type="submit" name="submit" value="Search Course" class="btn btn-primary">Search
+                            <button type="submit" name="submit" value="Search Course" class="btn btn-outline-dark">Search
                                 Course
                             </button>
                         </div>
@@ -125,7 +125,7 @@
                 <th>No course found!</th>
                 <%} else { %>
                 <form name="cform" id="cform" action="StudentController" method="post">
-                    <table>
+                    <table class="table table-sm">
                         <thead class="thead-light">
                         <tr>
                             <th>Term</th>
@@ -137,37 +137,39 @@
                             <th>Action</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <%
                             for (Course c : clist) {
                         %>
                         <tr>
                             <input style="display:none" name="id" value=<%=c.getCid() %>>
-                            <th><%=c.getYear() + "-" + c.getSemester()%>
-                            </th>
-                            <th><%=c.getCno() + "." + c.getSno() %>
-                            </th>
-                            <th><%=c.getCname() %>
-                            </th>
-                            <th><%=c.getTeacher_name()%>
-                            </th>
-                            <th><%=c.getStime().substring(0, 5) + "-" + c.getEtime().substring(0, 5)%>
-                            </th>
-                            <th><%=c.getRoom()%>
-                            </th>
-                            <th>
-                                <button type="button" class="btn btn-primary detail-btn" value="Detail"
+                            <td><%=c.getYear() + "-" + c.getSemester()%>
+                            </td>
+                            <td><%=c.getCno() + "." + c.getSno() %>
+                            </td>
+                            <td><%=c.getCname() %>
+                            </td>
+                            <td><%=c.getTeacher_name()%>
+                            </td>
+                            <td><%=c.getStime().substring(0, 5) + "-" + c.getEtime().substring(0, 5)%>
+                            </td>
+                            <td><%=c.getRoom()%>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm detail-btn" value="Detail"
                                         data-course-id="<%=c.getCid()%>">Detail
                                 </button>
-                                <button type="button" class="btn btn-success reg-btn" value="Register"
+                                <button type="button" class="btn btn-outline-success btn-sm reg-btn" value="Register"
                                         data-course-id="<%=c.getCid()%>">Register
                                 </button>
-                            </th>
+                            </td>
                         </tr>
                         <%
                             }
                         %>
                         <input id="select-id-input" type="text" name="selectid" value="" style="display:none">
                         <input id="op-input" type="text" name="op" value="" style="display:none">
+                        </tbody>
                     </table>
 
                 </form>
@@ -187,7 +189,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script src="<%= basePath %>app/js/course.js"></script>
-<script src="<%= basePath %>app/js/student.js?1"></script>
+<script src="<%= basePath %>app/js/student.js"></script>
 <script src="<%= basePath %>app/js/student.findCourse.js"></script>
 </body>
 </html>
