@@ -1,7 +1,7 @@
 **Init Project (useless in our project)**
 
 - Ues `npm install` to install dependencies
-
+- use init.sql, init2.sql to generate database 
 **************
 **Install dev dependencies**
 - Run 'npm install package-name --save-dev'
