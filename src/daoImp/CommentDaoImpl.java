@@ -21,7 +21,7 @@ public class CommentDaoImpl implements CommentDao {
             conn = db.getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, userId);
-            ResultSet resultSet = ps.executeQuery(sql);
+            ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
                 Comment c = new Comment();
