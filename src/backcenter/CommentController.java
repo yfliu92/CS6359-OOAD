@@ -35,7 +35,10 @@ public class CommentController extends HttpServlet {
         //operation: get ---->  type: all,
         String operation = request.getParameter("operation");
         if (operation == null) {
-            // when operating is null, or operation is "getAll", the code does exactly the same work
+            /**
+             * when operating is null, or operation is "getAll", the code does exactly the same work
+             * But this case is only used to support loading the page when user clicks the sidebar button
+             */
             List<Comment> results = cd.getAll(userId);
             List<Course> courses = courseDao.getCoursesByUserId(userId);
 
@@ -68,11 +71,15 @@ public class CommentController extends HttpServlet {
             out.println(responseJSONObject);
 
         } else if ("getComments".equals(operation)) {
-//             when the operating is "getComments", only need the parameters to be like
-//            {
-//                operation: "getComments",
-//                courseId: "123"
-//            }
+            /**
+             * when the operating is "getComments", only need the parameters to be like
+             *
+             * Use form to send the request, no ajax for this operation
+             * {
+             *      operation: "getComments",
+             *      courseId: "123"
+             * }
+             */
             String courseId = request.getParameter("courseId");
             List<Comment> results = cd.getCommentsByCourse(courseId);
             List<Course> courses = courseDao.getCoursesByUserId(userId);
@@ -83,10 +90,16 @@ public class CommentController extends HttpServlet {
             request.getRequestDispatcher("app/student/studentComments.jsp").forward(request, response);
 
         } else if ("getAll".equals(operation)) {
-//             when the operating is "getAll", only need the parameters to be like
-//            {
-//                operation: "getAll"
-//            }
+
+            /**
+             * when the operating is "getAll", only need the parameters to be like
+             *
+             * Use form to send the request, no ajax for this operation
+             * {
+             *      operation: "getAll"
+             * }
+             */
+
             List<Comment> results = cd.getAll(userId);
             List<Course> courses = courseDao.getCoursesByUserId(userId);
 
