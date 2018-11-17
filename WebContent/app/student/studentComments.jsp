@@ -7,7 +7,9 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+    int userType1 = (int) session.getAttribute("type");
     List<Comment> comments = (ArrayList) request.getAttribute("comments");
+    List<Course> courses = (ArrayList) request.getAttribute("courses");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,19 +35,80 @@
             <%@ include file="../shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container shadow-lg rounded">
                 <%--<h5> Courses </h5>--%>
+                <%
+                    if (userType1 == 1) {
+                %>
+                <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
+                    <h2>Make your comment!</h2>
+                </div>
+                <div id="create-comment-area" class="">
+                    <div class="form-group">
+                        <label for="comment-course-select">Select a course</label>
+                        <select class="form-control" id="comment-course-select">
+                            <%
+                                for (int i = 0; i < courses.size(); i++) {
+                                    Course course = courses.get(i);
+                                    int courseId = course.getCid();
+                                    String courseName = course.getCname();
+                            %>
+                            <option value="<%= courseId %>"><%= courseName %>
+                            </option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-rating">Rating</label>
+                        <select name="rating" id="comment-rating">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-content">Comment</label>
+                        <textarea class="form-control" id="comment-content" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary create-comment-button">submit</button>
+                </div>
+                <%}%>
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
                     <h2>Comments</h2>
+                </div>
+                <div class="form-group">
+                    <label for="course-filter">Select a course</label>
+                    <select class="form-control" id="course-filter">
+                        <option value="all">All</option>
+                        <%
+                            for (int i = 0; i < courses.size(); i++) {
+                                Course course = courses.get(i);
+                                int courseId = course.getCid();
+                                String courseName = course.getCname();
+                        %>
+                        <option value="<%= courseId %>"><%= courseName %>
+                        </option>
+                        <%}%>
+                    </select>
                 </div>
                 <%
                     for (int i = 0; i < comments.size(); i++) {
                         Comment c = comments.get(i);
                         int rating = c.getRating();
                         String content = c.getContent();
+                        Course course = c.getCourse();
+                        String courseName = course.getCname();
 
                 %>
-                <p><%= rating %></p>
+                <p><%= rating %>
+                </p>
 
-                <p><%= content %></p>
+                <p><%= content %>
+                </p>
+                <p><%= courseName %>
+                </p>
                 <%
                     }
                 %>
@@ -60,5 +123,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script src="<%= basePath %>app/js/comments.js"></script>
 </body>
 </html>

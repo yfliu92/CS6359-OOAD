@@ -4,8 +4,9 @@ public class Comment {
     private String id;
     private int rating;
     private String content;
-    private String courseId;
     private String userId;
+
+    private Course course;
 
     public Comment() {
     }
@@ -34,19 +35,19 @@ public class Comment {
         this.content = content;
     }
 
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

@@ -38,12 +38,17 @@
         <a href="<%=basePath1%>AttendanceController" class="list-group-item list-group-item-action student-attendance">Attendance</a>
     </div>
     <div class="list-group">
-        <a href="<%=basePath1%>CommentController" class="list-group-item list-group-item-action student-comments">Comments</a>
+        <a href="<%=basePath1%>CommentController"
+           class="list-group-item list-group-item-action student-teacher-comments">Comments</a>
     </div>
     <%} else {%>
     <div class="list-group">
         <a href="<%=basePath1%>app/teacher/teacher.jsp"
            class="list-group-item list-group-item-action sidebar-home">Home</a>
+    </div>
+    <div class="list-group">
+        <a href="<%=basePath1%>CommentController"
+           class="list-group-item list-group-item-action student-teacher-comments">Comments</a>
     </div>
     <div class="list-group">
         <a href="<%=basePath1%>AttendanceTeacherController"

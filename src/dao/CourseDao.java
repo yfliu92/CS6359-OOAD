@@ -14,4 +14,5 @@ public interface CourseDao {
 	public Course getCourse(String id);
 	public int getStuNum(String id);
 	public List<Course> getCourseList(String teacher_id);
+	public List<Course> getCoursesByUserId(String userID);
 }
