@@ -38,10 +38,16 @@
                 <%
                     if (userType1 == 1) {
                 %>
-                <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
-                    <h2>Make your comment!</h2>
-                </div>
-                <div id="create-comment-area" class="">
+                <%--<div class="page-content-title border-bottom pt-3 pb-2 mb-3">--%>
+                    <%--<h2>Make your comment!</h2>--%>
+                <%--</div>--%>
+                <br/>
+                <p>
+                    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#create-comment-area" aria-expanded="false" aria-controls="create-comment-area">
+                        Make your comment!
+                    </button>
+                </p>
+                <div id="create-comment-area" class="collapse">
                     <div class="form-group">
                         <label for="comment-course-select">Select a course</label>
                         <select class="form-control" id="comment-course-select">
@@ -72,7 +78,7 @@
                         <label for="comment-content">Comment</label>
                         <textarea class="form-control" id="comment-content" rows="3"></textarea>
                     </div>
-                    <button class="btn btn-primary create-comment-button">submit</button>
+                    <button class="btn btn-success create-comment-button">submit</button>
                 </div>
                 <%}%>
                 <div class="page-content-title border-bottom pt-3 pb-2 mb-3">
@@ -93,25 +99,34 @@
                         <%}%>
                     </select>
                 </div>
-                <%
-                    for (int i = 0; i < comments.size(); i++) {
-                        Comment c = comments.get(i);
-                        int rating = c.getRating();
-                        String content = c.getContent();
-                        Course course = c.getCourse();
-                        String courseName = course.getCname();
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Comment</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            for (int i = 0; i < comments.size(); i++) {
+                                Comment c = comments.get(i);
+                                int rating = c.getRating();
+                                String content = c.getContent();
+                                Course course = c.getCourse();
+                                String courseName = course.getCname();
 
-                %>
-                <p><%= rating %>
-                </p>
-
-                <p><%= content %>
-                </p>
-                <p><%= courseName %>
-                </p>
-                <%
-                    }
-                %>
+                        %>
+                        <tr>
+                            <td><%= courseName %></td>
+                            <td><%= rating %></td>
+                            <td><%= content %></td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
