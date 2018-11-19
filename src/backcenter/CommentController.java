@@ -45,7 +45,9 @@ public class CommentController extends HttpServlet {
             // set comments and courses, read in the jsp file
             request.setAttribute("comments", results);
             request.setAttribute("courses", courses);
+            request.setAttribute("operations", "getAll");
             request.getRequestDispatcher("app/student/studentComments.jsp").forward(request, response);
+
         } else if ("create".equals(operation)) {
             // communicate with an AJAX request, will not reload the full page
             Comment comment = new Comment();
@@ -86,6 +88,8 @@ public class CommentController extends HttpServlet {
 
             request.setAttribute("comments", results);
             request.setAttribute("courses", courses);
+            request.setAttribute("operations", operation);
+            request.setAttribute("courseId", courseId);
 
             request.getRequestDispatcher("app/student/studentComments.jsp").forward(request, response);
 

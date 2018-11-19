@@ -10,6 +10,11 @@
     int userType1 = (int) session.getAttribute("type");
     List<Comment> comments = (ArrayList) request.getAttribute("comments");
     List<Course> courses = (ArrayList) request.getAttribute("courses");
+    String operations = (String) request.getAttribute("operations");
+    String operationValue = "";
+    if ("getComments".equals(operations)) {
+        operationValue = (String) request.getAttribute("courseId");
+    }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,11 +44,13 @@
                     if (userType1 == 1) {
                 %>
                 <%--<div class="page-content-title border-bottom pt-3 pb-2 mb-3">--%>
-                    <%--<h2>Make your comment!</h2>--%>
+                <%--<h2>Make your comment!</h2>--%>
                 <%--</div>--%>
                 <br/>
                 <p>
-                    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#create-comment-area" aria-expanded="false" aria-controls="create-comment-area">
+                    <button class="btn btn-success" type="button" data-toggle="collapse"
+                            data-target="#create-comment-area" aria-expanded="false"
+                            aria-controls="create-comment-area">
                         Make your comment!
                     </button>
                 </p>
@@ -86,47 +93,55 @@
                 </div>
                 <div class="form-group">
                     <label for="course-filter">Select a course</label>
-                    <select class="form-control" id="course-filter">
-                        <option value="all">All</option>
-                        <%
-                            for (int i = 0; i < courses.size(); i++) {
-                                Course course = courses.get(i);
-                                int courseId = course.getCid();
-                                String courseName = course.getCname();
-                        %>
-                        <option value="<%= courseId %>"><%= courseName %>
-                        </option>
-                        <%}%>
-                    </select>
+                    <form id="course-select-form" action="CommentController" method="post">
+                        <select name="courseId" class="form-control" id="course-filter">
+                            <option value="all" <%if(!"getComments".equals(operations)){%>selected="selected"<%}%>>All
+                            </option>
+                            <%
+                                for (int i = 0; i < courses.size(); i++) {
+                                    Course course = courses.get(i);
+                                    int courseId = course.getCid();
+                                    String courseName = course.getCname();
+                            %>
+                            <option value="<%= courseId %>"
+                                    <%if(operationValue.equals(Integer.toString(courseId))){%>selected="selected"<%}%>><%= courseName %>
+                            </option>
+                            <%}%>
+                        </select>
+                        <input id="operation" type="hidden" name="operation">
+                    </form>
                 </div>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">Course Name</th>
-                            <th scope="col">Rating</th>
-                            <th scope="col">Comment</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            for (int i = 0; i < comments.size(); i++) {
-                                Comment c = comments.get(i);
-                                int rating = c.getRating();
-                                String content = c.getContent();
-                                Course course = c.getCourse();
-                                String courseName = course.getCname();
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (int i = 0; i < comments.size(); i++) {
+                            Comment c = comments.get(i);
+                            int rating = c.getRating();
+                            String content = c.getContent();
+                            Course course = c.getCourse();
+                            String courseName = course.getCname();
 
-                        %>
-                        <tr>
-                            <td><%= courseName %></td>
-                            <td><%= rating %></td>
-                            <td><%= content %></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-                    </table>
+                    %>
+                    <tr>
+                        <td><%= courseName %>
+                        </td>
+                        <td><%= rating %>
+                        </td>
+                        <td><%= content %>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
