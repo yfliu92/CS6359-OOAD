@@ -48,7 +48,7 @@
                 <%--</div>--%>
                 <br/>
                 <p>
-                    <button class="btn btn-success" type="button" data-toggle="collapse"
+                    <button id="make-your-comment" class="btn btn-success" type="button" data-toggle="collapse"
                             data-target="#create-comment-area" aria-expanded="false"
                             aria-controls="create-comment-area">
                         Make your comment!
