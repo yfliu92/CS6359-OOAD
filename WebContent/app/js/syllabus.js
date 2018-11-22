@@ -29,6 +29,7 @@ function update(syllabus_id) {
     var  taName=$("#taName").val();
     var  taEmail=$("#taEmail").val();
     var  grading=$("#grading").val();
+
     $.ajax({
         url: "syllabusController",
         data: {"op":"update", "syllabusId":syllabus_id,"description":description, "taName":taName,"taEmail":taEmail,"grading":grading},

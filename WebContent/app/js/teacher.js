@@ -62,8 +62,9 @@ function courseDetail(courseId) {
             //display course detail
             var jsonObject=$.parseJSON(data);
             $(".page-content-container").empty();
+
             $(".page-content-container").append("<h6>Course Name:"+jsonObject.cName+"</h6>"+
-                "<h6>Course Number:"+jsonObject.preifx+jsonObject.cNum+"."+jsonObject.sectionNum+"</h6>"+
+                "<h6>Course Number:"+jsonObject.pref+jsonObject.cNum+"."+jsonObject.sectionNum+"</h6>"+
                 "<h6>Room:"+jsonObject.room+"</h6>"+"<h6>Capacity:"+jsonObject.capacity+"</h6>"+
                 "<h6>Year&Semester:"+jsonObject.year+"/"+jsonObject.semester+"</h6>"+
                 "<h6>Period:"+jsonObject.startDay+"-"+jsonObject.endDay+"</h6>"+

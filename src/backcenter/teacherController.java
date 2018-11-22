@@ -63,8 +63,8 @@ public class teacherController extends HttpServlet {
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("cId",course.getCid());
             jsonObject.put("cName",course.getCname());
-            jsonObject.put("prefix",course.getPrefix());
-            jsonObject.put("courseNum",course.getCno());
+            jsonObject.put("pref",course.getPrefix());
+            jsonObject.put("cNum",course.getCno());
             jsonObject.put("sectionNum",course.getSno());
             jsonObject.put("room",course.getRoom());
             jsonObject.put("capacity",course.getCapacity());
