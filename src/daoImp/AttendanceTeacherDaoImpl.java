@@ -29,7 +29,7 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	public int setRK(String id, String rk, int cid) {
 		int rs=0;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(df.format(new Date()));
+//		System.out.println(df.format(new Date()));
 		String date = df.format(new Date());
 		try{
 			conn = db.getConnection();
@@ -64,7 +64,7 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	public int endAttendance(String id, int cid) {
 		int rs=0;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(df.format(new Date()));
+//		System.out.println(df.format(new Date()));
 		String date = df.format(new Date());
 		try{
 			conn = db.getConnection();
@@ -83,7 +83,7 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 	public List<User> showAbsence(int cid) {
 		List<User> list = new ArrayList<>();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(df.format(new Date()));
+//		System.out.println(df.format(new Date()));
 		String date = df.format(new Date());
 		try {
 			conn = db.getConnection();
