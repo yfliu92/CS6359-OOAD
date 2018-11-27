@@ -15,6 +15,7 @@ import dao.AttendanceDao;
 import dao.AttendanceTeacherDao;
 import daoImp.AttendanceDaoImpl;
 import daoImp.AttendanceTeacherDaoImpl;
+import domain.Attendance;
 import domain.Course;
 import domain.User;
 
@@ -55,7 +56,10 @@ public class AttendanceController extends HttpServlet {
 			int ccid = Integer.parseInt(cid);
 			String key = request.getParameter("ramdonkey");
 			AttendanceDao aDao = new AttendanceDaoImpl();
-			int rs = aDao.attend(key,id,ccid);
+			Attendance a = new Attendance();
+			a.setCid(ccid);
+			a.setUid(id);
+			int rs = aDao.attend(key,a);
 	        System.out.println(rs);
 	        if(rs==0) {
 	        	request.setAttribute("message","Attendance fail");

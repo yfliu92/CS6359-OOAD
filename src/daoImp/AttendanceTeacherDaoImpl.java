@@ -13,6 +13,7 @@ import java.util.List;
 import dao.AttendanceDao;
 import dao.AttendanceTeacherDao;
 import db.DbManager;
+import domain.Attendance;
 import domain.Course;
 import domain.User;
 
@@ -92,9 +93,11 @@ public class AttendanceTeacherDaoImpl implements AttendanceTeacherDao {
 			ps.setInt(1, cid);
 			ps.setInt(2, cid);
 			ps.setString(3, date);
+			System.out.println(date);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				User u = new User();
+				Attendance a = new Attendance();
 				u.setId(rs.getString(1));
 				u.setF_name(rs.getString(2));
 				u.setL_name(rs.getString(3));

@@ -11,6 +11,7 @@ import java.util.List;
 
 import dao.AttendanceDao;
 import db.DbManager;
+import domain.Attendance;
 import domain.Course;
 import domain.User;
 
@@ -25,7 +26,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
 	DbManager db = new DbManager();
 	
 	@Override
-	public int attend(String key, String id,int cid) {
+	public int attend(String key, Attendance a) {
 		int rs=0;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(df.format(new Date()));
@@ -34,25 +35,25 @@ public class AttendanceDaoImpl implements AttendanceDao {
 			conn = db.getConnection();
 			ps =conn.prepareStatement("select * from attendance_key where ramdon_key=? and course_id=? and attend_state=1");
 			ps.setString(1, key);
-			ps.setInt(2, cid);
+			ps.setInt(2, a.getCid());
 			ResultSet r = ps.executeQuery();
 			while(r.next()){
 				ps =conn.prepareStatement("SELECT * FROM attendance WHERE stu_id=? AND course_id =? and day=?");
-				ps.setString(1, id);
-				ps.setInt(2, cid);
+				ps.setString(1, a.getUid());
+				ps.setInt(2, a.getCid());
 				ps.setString(3, date);
 				ResultSet r2 = ps.executeQuery();
 				if(r2.next()) {
 					ps =conn.prepareStatement("update attendance set state=1 where stu_id=? and course_id=? and day=?");
-					ps.setString(1, id);
-					ps.setInt(2, cid);
+					ps.setString(1, a.getUid());
+					ps.setInt(2, a.getCid());
 					ps.setString(3, date);
 					rs=ps.executeUpdate();
 				}
 				else {
 					ps =conn.prepareStatement("insert into attendance (stu_id,course_id,day,state)  VALUES (?,?,?,1) ");
-					ps.setString(1, id);
-					ps.setInt(2, cid);
+					ps.setString(1, a.getUid());
+					ps.setInt(2, a.getCid());
 					ps.setString(3, date);
 					rs=ps.executeUpdate();
 				}
