@@ -35,6 +35,8 @@
             <%@ include file="./app/shared/sidebar/sidebar.jsp" %>
             <div class="col-md-10 page-content-container  shadow-lg rounded">
                 <h2> ${updmsg} </h2>
+                <h1> ${message} !!! </h1>
+
                 <%if (list != null) { %>
                 <div class="page-content-title border-bottom pt-2 pb-2 mb-3">
                     <h2>Current Courses</h2>
